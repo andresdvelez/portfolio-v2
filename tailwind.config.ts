@@ -1,10 +1,12 @@
 import type { Config } from "tailwindcss";
+import { addDynamicIconSelectors } from "@iconify/tailwind";
+
+import { nextui } from "@nextui-org/react";
 
 const config: Config = {
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
+    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
@@ -12,8 +14,14 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      height: {
+        noheader: "calc(100dvh - 120px)",
+      },
+      fontFamily: {
+        "saint-regus": "var(--font-saint-regus)",
+      },
     },
   },
-  plugins: [],
+  plugins: [nextui(), addDynamicIconSelectors()],
 };
 export default config;
