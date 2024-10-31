@@ -55,7 +55,7 @@ export const Header = () => {
                 className="relative z-10 flex flex-col px-4 py-3 cursor-pointer hover:scale-105 group"
                 onClick={() => handleSmoothScroll(item.ref)}
               >
-                <a>{item.title}</a>
+                {item.title}
                 <div className="absolute top-11 left-1/2 h-1 w-1 bg-foreground rounded-full transform scale-0 group-hover:scale-100 transition-transform duration-200 ease-[cubic-bezier(0.76, 0, 0.24, 1)]"></div>
               </div>
             </Magnetic>

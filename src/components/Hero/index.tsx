@@ -83,9 +83,10 @@ export const Hero = () => {
         />
       </aside>
       <Image
-        width={800}
         src="/mobile-screenshot.webp"
         alt="Indahouse project mockup"
+        width={600}
+        height={400}
         className="z-0 hidden lg:block"
         classNames={{
           wrapper: "flex items-center justify-center",
