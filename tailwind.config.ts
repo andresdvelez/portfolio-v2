@@ -15,7 +15,7 @@ const config: Config = {
         foreground: "var(--foreground)",
       },
       height: {
-        noheader: "calc(100dvh - 120px)",
+        noheader: "calc(100vh - 120px)",
       },
       fontFamily: {
         "saint-regus": "var(--font-saint-regus)",
