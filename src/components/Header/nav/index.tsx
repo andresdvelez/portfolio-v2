@@ -46,7 +46,7 @@ export function Nav({ setIsActive }: Props) {
       exit="exit"
       className="menu w-screen lg:w-max z-30 h-screen"
     >
-      <div className="body p-[50px] md:p-[100px]">
+      <div className="body p-[50px] md:p-[100px] pb-28">
         <div className="nav">
           <div className="header">
             <p>Navigation</p>
