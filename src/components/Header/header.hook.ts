@@ -18,7 +18,9 @@ export const useHeader = () => {
     gsap.registerPlugin(ScrollTrigger);
 
     const mediaQuery = window.innerWidth < 768;
-    const endScroll = mediaQuery ? "+=0" : window.innerHeight - 800;
+    const endScroll = mediaQuery
+      ? window.innerHeight - window.innerHeight
+      : window.innerHeight - 800;
 
     console.log(mediaQuery);
 
