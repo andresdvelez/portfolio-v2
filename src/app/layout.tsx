@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   title: "Andres Velez | Software Developer",
   description: "Andres Velez Software Developer's Portfolio",
   alternates: {
-    canonical: "https://andresvelez.dev",
+    canonical: "https://andresvelez.online",
   },
   openGraph: {
     title: "Andres Velez | Software Developer",
