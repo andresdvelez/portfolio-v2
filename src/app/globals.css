@@ -91,7 +91,7 @@ body {
 
 /* Nav */
 .menu {
-  height: 100vh;
+  height: 100dvh;
   background-color: rgb(41, 41, 41);
   position: fixed;
   right: 0;
