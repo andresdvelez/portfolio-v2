@@ -34,7 +34,7 @@ export const Hero = () => {
       <div className="bg-slate-400/5 w-[300px] h-[300px] absolute  z-10 blur-3xl inset-y-52 inset-x-24 lg:inset-x-[34rem]"></div>
       <aside className="flex justify-center items-start flex-col gap-2 h-full z-20 w-1/2">
         <div className="flex items-start justify-between flex-col gap-6">
-          <h1 className="text-6xl md:text-8xl -mt-32 lg:-mt-60 font-medium lg:w-max">
+          <h1 className="text-6xl md:text-8xl -mt-32 lg:-mt-60 font-medium 2xl:w-max">
             Software Developer
           </h1>
           <div className="flex items-start md:items-center justify-between gap-8 flex-col md:flex-row">
