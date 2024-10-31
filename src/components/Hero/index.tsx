@@ -29,12 +29,12 @@ export const Hero = () => {
     >
       <div className=" absolute -inset-y-4 h-3" ref={homeRef}></div>
       <div className="bg-white/5 w-[300px] h-[300px] absolute  z-10 blur-3xl inset-y-80 inset-x-12 lg:inset-x-[34rem]"></div>
-      <aside className="flex justify-center items-start flex-col gap-2 h-full z-20">
+      <aside className="flex justify-center items-start flex-col gap-2 h-full z-20 w-1/2">
         <div className="flex items-start justify-between flex-col gap-6">
           <h1 className="text-6xl md:text-8xl -mt-32 lg:-mt-60 font-medium lg:w-max">
             Software Developer
           </h1>
-          <div className="flex items-center justify-between gap-8">
+          <div className="flex items-start md:items-center justify-between gap-8 flex-col md:flex-row">
             <Card className="gap-0 z-0 bg-slate-50/5 p-2" shadow="lg" isBlurred>
               <CardHeader className="p-1 px-2">
                 <i
@@ -72,6 +72,7 @@ export const Hero = () => {
         />
       </aside>
       <Image
+        width={800}
         src="/mobile-screenshot.webp"
         alt="Indahouse project mockup"
         className="z-0 hidden lg:block"

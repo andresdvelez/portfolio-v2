@@ -118,7 +118,7 @@ export function Projects() {
       </div>
       <div className="flex gap-5 mx-12 md:mx-[200px]">
         <RoundedButton onClick={() => {}}>
-          <p className="py-1">More work</p>
+          <p className="py-1">More works</p>
         </RoundedButton>
       </div>
       <>
@@ -134,15 +134,17 @@ export function Projects() {
             className="relative h-full w-full transition-all duration-500 ease-[cubic-bezier(0.76,0,0.24,1)]"
           >
             {projects.map((project, index) => {
-              const { src, color } = project;
+              const { src, color, href } = project;
               return (
                 <div
                   className="flex items-center justify-center h-full w-full backdrop-blur-md"
                   style={{ backgroundColor: color }}
                   key={`modal_${index}`}
+                  onClick={() => console.log(href)}
                 >
                   <Image
                     src={`/projects/${src}`}
+                    className="pointer-events-none"
                     width={300}
                     height={0}
                     alt="image"

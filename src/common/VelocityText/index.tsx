@@ -22,16 +22,14 @@ export const VelocityText = ({
     [-0.5, 0.5],
     ["45deg", "-45deg"]
   );
-  const skewX = useSpring(skewXRaw, { mass: 1, stiffness: 800, damping: 100 });
+  const skewX = useSpring(skewXRaw, { mass: 1, stiffness: 200, damping: 20 });
 
   const xRaw = useTransform(scrollYProgress, [0, 1], [0, -4000]);
-  const x = useSpring(xRaw, { mass: 3, stiffness: 400, damping: 50 });
+  const x = useSpring(xRaw, { mass: 1, stiffness: 200, damping: 20 });
 
   return (
-    <div className=" flex h-[100px] items-center overflow-hidden">
-      <motion.p style={{ skewX, x }} className={className}>
-        {text}
-      </motion.p>
-    </div>
+    <motion.p style={{ skewX, x }} className={className}>
+      {text}
+    </motion.p>
   );
 };

@@ -5,6 +5,7 @@ import { NavItem } from "@/types";
 import { useSmoothScrollContext } from "@/context/ref-scroll";
 import { Dispatch, SetStateAction, useState } from "react";
 import { motion } from "framer-motion";
+import { enablePageScroll } from "scroll-lock";
 
 interface Props {
   setIsActive: Dispatch<SetStateAction<boolean>>;
@@ -32,6 +33,7 @@ export function Nav({ setIsActive }: Props) {
   ];
 
   const handleLinkClick = (data: NavItem) => {
+    enablePageScroll();
     setIsActive(false);
     handleSmoothScroll(data.ref);
   };
@@ -44,7 +46,7 @@ export function Nav({ setIsActive }: Props) {
       exit="exit"
       className="menu w-screen lg:w-max z-30"
     >
-      <div className="body">
+      <div className="body p-[50px] md:p-[100px]">
         <div className="nav">
           <div className="header">
             <p>Navigation</p>

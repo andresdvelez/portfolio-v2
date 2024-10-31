@@ -7,6 +7,7 @@ import { Magnetic } from "../../common/Magnetic";
 import clsx from "clsx";
 import { useHeader } from "./header.hook";
 import { useSmoothScrollContext } from "@/context/ref-scroll";
+import { disablePageScroll } from "scroll-lock";
 
 export const Header = () => {
   const { header, button, setIsActive, isActive } = useHeader();
@@ -66,6 +67,7 @@ export const Header = () => {
         <RoundedButton
           onClick={() => {
             setIsActive(!isActive);
+            disablePageScroll();
           }}
           className="button"
         >

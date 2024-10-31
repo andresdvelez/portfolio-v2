@@ -6,6 +6,7 @@ import { useScroll, motion, useTransform } from "framer-motion";
 import { Magnetic } from "../../common/Magnetic";
 import { useSmoothScrollContext } from "@/context/ref-scroll";
 import { useRef } from "react";
+import Link from "next/link";
 
 export function Footer() {
   const container = useRef(null);
@@ -15,9 +16,15 @@ export function Footer() {
     target: container,
     offset: ["start end", "end end"],
   });
-  const x = useTransform(scrollYProgress, [0, 1], [0, 100]);
+
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+
+  const xMobile = useTransform(scrollYProgress, [0, 1], [0, 250]);
+  const xDesktop = useTransform(scrollYProgress, [0, 1], [0, 100]);
   const y = useTransform(scrollYProgress, [0, 1], [-500, 0]);
   const rotate = useTransform(scrollYProgress, [0, 1], [120, 90]);
+
+  const xReduced = isMobile ? xMobile : xDesktop;
 
   const colombiaTime = new Date().toLocaleString("en-US", {
     timeZone: "America/Bogota",
@@ -46,7 +53,7 @@ export function Footer() {
             together
           </h3>
           <motion.div
-            style={{ x }}
+            style={{ x: xReduced }}
             className="absolute left-[calc(100%-400px)] top-[calc(100%-75px)]"
           >
             <RoundedButton
@@ -98,21 +105,35 @@ export function Footer() {
               </p>
             </span>
           </div>
-          <div className="flex gap-2 items-end">
+          <div className="flex gap-2  flex-col">
             <span className="flex flex-col gap-3.5">
               <h3 className="text-gray-500 cursor-default font-light text-base">
                 Socials
               </h3>
             </span>
-            <Magnetic>
-              <p className="cursor-pointer hover:underline">Instagram</p>
-            </Magnetic>
-            {/* <Magnetic>
+            <div className="flex gap-2">
+              <Magnetic>
+                <Link
+                  target="_blank"
+                  href="https://www.instagram.com/andresvelezs/"
+                  className="cursor-pointer hover:underline"
+                >
+                  Instagram
+                </Link>
+              </Magnetic>
+              {/* <Magnetic>
               <p className="cursor-pointer hover:underline">Dribbble</p>
             </Magnetic> */}
-            <Magnetic>
-              <p className="cursor-pointer hover:underline">Linkedin</p>
-            </Magnetic>
+              <Magnetic>
+                <Link
+                  target="_blank"
+                  href="https://www.linkedin.com/in/andres-velez-su/"
+                  className="cursor-pointer hover:underline"
+                >
+                  Linkedin
+                </Link>
+              </Magnetic>
+            </div>
           </div>
         </div>
       </div>
