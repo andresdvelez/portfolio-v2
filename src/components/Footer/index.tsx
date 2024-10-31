@@ -19,7 +19,7 @@ export function Footer() {
 
   const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
 
-  const xMobile = useTransform(scrollYProgress, [0, 1], [0, 250]);
+  const xMobile = useTransform(scrollYProgress, [0, 1], [0, 220]);
   const xDesktop = useTransform(scrollYProgress, [0, 1], [0, 100]);
   const y = useTransform(scrollYProgress, [0, 1], [-500, 0]);
   const rotate = useTransform(scrollYProgress, [0, 1], [120, 90]);
@@ -40,16 +40,16 @@ export function Footer() {
       className="text-black flex flex-col items-center justify-center bg-white relative"
     >
       <div className="pt-[200px] w-full max-w-[1800px]">
-        <div className="border-b border-gray-600 pb-[100px] mx-12 lg:mx-[200px] relative">
+        <div className="border-b border-gray-600 pb-[100px] mx-8 md:mx-12 lg:mx-[200px] relative">
           <span className="flex items-center">
-            <div className="w-[100px] h-[100px] relative rounded-full overflow-hidden">
+            <div className="w-[60px] h-[60px] md:w-[100px] md:h-[100px] relative rounded-full overflow-hidden">
               <Image fill={true} alt={"image"} src={`/personal.webp`} />
             </div>
-            <h3 className="ml-3 text-2xl md:text-[5vw] font-light m-0">
+            <h3 className="ml-3 text-4xl md:text-[5vw] font-light m-0">
               Let&apos;s work
             </h3>
           </span>
-          <h3 className="text-2xl md:text-[5vw] font-light lg:mt-6">
+          <h3 className="text-4xl md:text-[5vw] font-light lg:mt-6">
             together
           </h3>
           <motion.div
@@ -86,7 +86,7 @@ export function Footer() {
             <p>advelezs@gmail.com</p>
           </RoundedButton>
         </div>
-        <div className="flex justify-between mt-20 md:mt-[200px] p-5 flex-col md:flex-row">
+        <div className="flex justify-between mt-20 md:mt-[200px] p-5 flex-col md:flex-row gap-4">
           <div className="flex gap-6 items-end">
             <span className="flex flex-col gap-3.5">
               <h3 className="text-gray-500 cursor-default font-light text-base">
@@ -105,7 +105,7 @@ export function Footer() {
               </p>
             </span>
           </div>
-          <div className="flex gap-2  flex-col">
+          <div className="flex gap-2 flex-col">
             <span className="flex flex-col gap-3.5">
               <h3 className="text-gray-500 cursor-default font-light text-base">
                 Socials

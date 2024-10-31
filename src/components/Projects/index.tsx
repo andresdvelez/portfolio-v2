@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { Project } from "./Project";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import gsap from "gsap";
 import Image from "next/image";
 import { RoundedButton } from "../../common/RoundedButton";
@@ -41,13 +41,6 @@ export function Projects() {
   const yMoveCursor = useRef<gsap.QuickToFunc | null>(null);
   const xMoveCursorLabel = useRef<gsap.QuickToFunc | null>(null);
   const yMoveCursorLabel = useRef<gsap.QuickToFunc | null>(null);
-
-  const { scrollYProgress } = useScroll({
-    target: container,
-    offset: ["start end", "end start"],
-  });
-
-  const height = useTransform(scrollYProgress, [0, 0.9], [50, 0]);
 
   useEffect(() => {
     xMoveContainer.current = gsap.quickTo(modalContainer.current, "left", {
@@ -101,7 +94,7 @@ export function Projects() {
       onMouseMove={(e) => {
         moveItems(e.clientX, e.clientY);
       }}
-      className="flex flex-col items-center mt-[200px] content-container h-[110vh] relative z-10 bg-background"
+      className="flex flex-col items-center mt-[100px] pb-12 content-container relative z-10 bg-background"
     >
       <div className="max-w-[1400px] w-full flex flex-col items-center justify-center mb-[100px]">
         {projects.map((project, index) => {
@@ -171,9 +164,6 @@ export function Projects() {
           View
         </motion.div>
       </>
-      <motion.div style={{ height }} className="circleContainer">
-        <div className="circle"></div>
-      </motion.div>
       <div ref={workRef} className="h-3 w-3 absolute inset-80"></div>
     </section>
   );
