@@ -78,7 +78,7 @@ export const Hero = () => {
         </div>
         <VelocityText
           scrollYProgress={scrollYProgress}
-          text="With a T-shape skillset in design, management, and development"
+          text="Bringing deep expertise in design, management, and development with versatile, cross-functional skills."
           className="text-5xl lg:text-[90px] tracking-wider leading-snug font-medium absolute bottom-0 left-0 w-max font-saint-regus pl-4"
         />
       </aside>
