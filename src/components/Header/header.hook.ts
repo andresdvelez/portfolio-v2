@@ -22,7 +22,7 @@ export const useHeader = () => {
 
     console.log(mediaQuery);
 
-    gsap.set(button.current, { scale: mediaQuery ? 1 : 0 });
+    // gsap.set(button.current, { scale: mediaQuery ? 1 : 0 });
 
     gsap.to(button.current, {
       scrollTrigger: {
