@@ -96,7 +96,7 @@ export function Projects() {
   };
 
   return (
-    <main
+    <section
       ref={container}
       onMouseMove={(e) => {
         moveItems(e.clientX, e.clientY);
@@ -175,6 +175,6 @@ export function Projects() {
         <div className="circle"></div>
       </motion.div>
       <div ref={workRef} className="h-3 w-3 absolute inset-80"></div>
-    </main>
+    </section>
   );
 }
