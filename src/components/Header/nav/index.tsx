@@ -5,7 +5,6 @@ import { NavItem } from "@/types";
 import { useSmoothScrollContext } from "@/context/ref-scroll";
 import { Dispatch, SetStateAction, useState } from "react";
 import { motion } from "framer-motion";
-import { enablePageScroll } from "scroll-lock";
 
 interface Props {
   setIsActive: Dispatch<SetStateAction<boolean>>;
@@ -33,7 +32,6 @@ export function Nav({ setIsActive }: Props) {
   ];
 
   const handleLinkClick = (data: NavItem) => {
-    enablePageScroll();
     setIsActive(false);
     handleSmoothScroll(data.ref);
   };
