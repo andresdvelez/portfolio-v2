@@ -17,12 +17,12 @@ export function Project({ index, title, description, manageModal }: Props) {
       onMouseLeave={(e) => {
         manageModal(false, index, e.clientX, e.clientY);
       }}
-      className="flex w-full justify-between items-center flex-col md:flex-row px-0 md:px-[100px] py-[50px] border-t border-gray-300 cursor-pointer transition-all duration-200 hover:opacity-50 last:border-b"
+      className="flex w-full justify-between items-center flex-col md:flex-row py-[50px] border-t border-gray-300 cursor-pointer transition-all duration-200 hover:opacity-50 last:border-b"
     >
-      <h2 className="text-5xl md:text-[60px] m-0 font-normal transition-all duration-400 hover:-translate-x-2">
+      <h2 className="text-5xl md:text-[60px] m-0 font-normal transition-all duration-400 hover:-translate-x-2 md:px-[100px]">
         {title}
       </h2>
-      <p className="font-light transition-all duration-400 hover:translate-x-2">
+      <p className="font-light transition-all duration-400 hover:translate-x-2 md:px-[100px]">
         {description}
       </p>
     </div>

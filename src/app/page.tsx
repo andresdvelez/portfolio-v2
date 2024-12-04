@@ -1,3 +1,4 @@
+import { About } from "@/components/About";
 import { Hero } from "@/components/Hero";
 import { PreloaderComponent } from "@/components/PreloaderInjection";
 import { Projects } from "@/components/Projects";
@@ -18,6 +19,7 @@ export default function Home() {
     <>
       <PreloaderComponent />
       <Hero />
+      <About />
       <Projects />
     </>
   );
