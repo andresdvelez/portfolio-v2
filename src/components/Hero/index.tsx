@@ -27,7 +27,7 @@ export const Hero = () => {
   return (
     <section
       ref={targetRef}
-      className="w-screen content-container h-[70svh] relative flex items-center justify-between overflow-x-hidden mt-[8rem]"
+      className="w-screen content-container h-[90svh] relative flex items-center justify-between overflow-hidden"
     >
       <div className=" absolute -inset-y-4 h-3" ref={homeRef}></div>
       <div className="bg-slate-400/5 w-[300px] h-[300px] absolute  z-10 blur-3xl inset-y-52 inset-x-24 lg:inset-x-[34rem]"></div>

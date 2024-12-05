@@ -37,7 +37,7 @@ export function Footer() {
     <motion.div
       style={{ y }}
       ref={container}
-      className="text-black flex flex-col items-center justify-center bg-white relative"
+      className="text-black flex flex-col items-center justify-center bg-white relative h-lvh"
     >
       <div className="pt-[200px] w-full max-w-[1800px]">
         <div className="border-b border-gray-600 pb-[100px] mx-8 md:mx-12 lg:mx-[200px] relative">
