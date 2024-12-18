@@ -31,8 +31,6 @@ export const SmoothScrollProvider = ({
     if (targetElement) {
       targetElement.scrollIntoView({
         behavior: "smooth",
-        block: "center",
-        inline: "center",
       });
     }
   };

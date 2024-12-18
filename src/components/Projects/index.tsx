@@ -10,8 +10,6 @@ import { useInView } from "framer-motion";
 export function Projects() {
   const topRightCornerRef = useRef(null);
 
-  const { workRef } = useSmoothScrollContext();
-
   const inView = useInView(topRightCornerRef);
 
   const [activeMenu, setActiveMenu] = useState<number | null>(null);
@@ -50,7 +48,7 @@ export function Projects() {
           <p className="py-1">More works</p>
         </RoundedButton>
       </div>
-      <div ref={workRef} className="h-3 w-3 absolute inset-80"></div>
+      {/* <div ref={workRef} className="h-3 w-3 absolute inset-0 bg-red-500"></div> */}
     </section>
   );
 }

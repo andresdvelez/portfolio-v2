@@ -1,18 +1,19 @@
 "use client";
 
+import { useSmoothScrollContext } from "@/context/ref-scroll";
 import { Link } from "@nextui-org/react";
 import { useInView } from "framer-motion";
 import Image from "next/image";
 import React, { useRef } from "react";
 
 export const About = () => {
-  const aboutContainer = useRef(null);
+  const { workRef } = useSmoothScrollContext();
 
-  const inView = useInView(aboutContainer);
+  const inView = useInView(workRef);
 
   return (
     <section
-      ref={aboutContainer}
+      ref={workRef}
       className="flex flex-col md:flex-row gap-x-0 gap-y-0 max-w-[1440px] py-[86px] content-container"
     >
       <p className="w-1/4 text-xl">About</p>

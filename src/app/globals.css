@@ -19,7 +19,7 @@ body {
 
 /* Custom scrollbar styles */
 ::-webkit-scrollbar {
-  width: 4px;
+  display: none;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -144,10 +144,6 @@ body {
   position: relative;
   z-index: 1;
   transition: color 0.4s linear;
-}
-
-.roundedButton:hover p {
-  color: white;
 }
 
 .circle {

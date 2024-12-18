@@ -4,14 +4,14 @@ import { motion } from "framer-motion";
 import { opacity, slideUp } from "./anim";
 
 const words = [
-  "Hello",
+  "Hola",
   "Bonjour",
   "Ciao",
   "Olà",
   "やあ",
   "Hallå",
   "Guten tag",
-  "Hallo",
+  "Hello",
 ];
 
 export function Preloader() {

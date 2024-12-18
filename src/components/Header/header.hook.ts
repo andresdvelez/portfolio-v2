@@ -22,8 +22,6 @@ export const useHeader = () => {
       ? window.innerHeight - window.innerHeight
       : window.innerHeight - 800;
 
-    console.log(mediaQuery);
-
     // gsap.set(button.current, { scale: mediaQuery ? 1 : 0 });
 
     gsap.to(button.current, {
