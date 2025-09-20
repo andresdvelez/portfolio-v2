@@ -53,28 +53,20 @@ export const Hero = () => {
                   isBlurred
                 >
                   <CardHeader className="p-1 px-2">
-                    <i
-                      className="icon-[material-symbols--work]"
-                      role="img"
-                      aria-hidden="true"
-                    />
+                    <span className="hero-arrow">→</span>
                   </CardHeader>
                   <CardBody className="p-1 px-2 text-sm">
-                    Recent Experience
+                    Every project is a collaboration.
                   </CardBody>
                   <CardFooter className="text-white/60 p-1 px-2 text-xs">
-                    Cofounder @ Norvik Tech
+                    Guided by clarity, driven by strategy.
                   </CardFooter>
                 </Card>
               </motion.div>
               <motion.div style={{ y: y2 }}>
                 <Card className="gap-0 z-0 p-2 bg-slate-50/5" isBlurred>
                   <CardHeader className="p-1 px-2">
-                    <i
-                      className="icon-[gridicons--location]"
-                      role="img"
-                      aria-hidden="true"
-                    />
+                    <span className="hero-arrow">→</span>
                   </CardHeader>
                   <CardBody className="p-1 px-2 text-sm">Location</CardBody>
                   <CardFooter className="text-white/60 p-1 px-2 text-xs">

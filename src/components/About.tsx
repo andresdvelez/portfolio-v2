@@ -38,7 +38,7 @@ export const About = () => {
         </Link>{" "}
         &{" "}
         <Link
-          href="https://blooma.io/"
+          href="https://ganado.co/"
           target="_blank"
           className="text-white text-inherit text-xl md:text-3xl lg:text-[34px] relative"
         >
@@ -50,7 +50,7 @@ export const About = () => {
               className="absolute !inset-y-6"
             />
           )}
-          Blooma io
+          Ganado co
         </Link>
       </p>
     </section>

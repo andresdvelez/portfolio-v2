@@ -183,3 +183,16 @@ body {
   mix-blend-mode: overlay;
   border-radius: inherit;
 }
+
+/* Hero editorial helpers */
+.hero-lead {
+  text-wrap: balance;
+}
+.hero-lead::first-letter {
+  font-size: 1.25em;
+  font-weight: 600;
+}
+.hero-arrow {
+  display: inline-block;
+  transform: translateY(-0.1em);
+}

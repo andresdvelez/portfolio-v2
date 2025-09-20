@@ -15,7 +15,7 @@ export function Projects() {
   const [activeMenu, setActiveMenu] = useState<number | null>(null);
 
   return (
-    <section className="flex flex-col items-center mt-[100px] pb-12 content-container z-10 bg-background h-[80svh] gap-2 relative">
+    <section className="flex flex-col items-center mt-[100px] pb-24 md:pb-28 content-container z-10 bg-background min-h-[80svh] gap-2 relative">
       <p className="text-xl text-start w-full">Most popular</p>
       <div
         ref={topRightCornerRef}
@@ -43,7 +43,7 @@ export function Projects() {
         </ul>
       </div>
       <Scene inView={inView} activeMenu={activeMenu} />
-      <div className="flex gap-5 mx-12 md:mx-[200px] mb-10">
+      <div className="flex gap-5 mx-12 md:mx-[200px] mb-16 md:mb-24">
         <RoundedButton onClick={() => {}}>
           <p className="py-1">More works</p>
         </RoundedButton>
