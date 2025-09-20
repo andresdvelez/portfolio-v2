@@ -42,8 +42,9 @@ export const useHeader = () => {
               scale: 1,
               duration: 0.25,
               ease: "power1.out",
-              onStart: () =>
-                gsap.set(button.current, { pointerEvents: "auto" }),
+              onStart: () => {
+                gsap.set(button.current, { pointerEvents: "auto" });
+              },
             });
           } else if (self.direction === -1 && self.progress < 0.1) {
             // Scrolling up and near the top
@@ -51,8 +52,9 @@ export const useHeader = () => {
               scale: 0,
               duration: 0.25,
               ease: "power1.out",
-              onComplete: () =>
-                gsap.set(button.current, { pointerEvents: "none" }),
+              onComplete: () => {
+                gsap.set(button.current, { pointerEvents: "none" });
+              },
             });
             setIsActive(false);
           }
