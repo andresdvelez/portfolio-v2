@@ -19,7 +19,13 @@ const saintRegus = localFont({
   variable: "--font-saint-regus",
 });
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+const RAW_BASE_URL =
+  process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+// Ensure the BASE_URL always has a protocol to satisfy new URL()
+const BASE_URL =
+  RAW_BASE_URL.startsWith("http://") || RAW_BASE_URL.startsWith("https://")
+    ? RAW_BASE_URL
+    : `https://${RAW_BASE_URL}`;
 const OPEN_GRAPH_IMAGE_URL = `${BASE_URL}/thumbnail.jpg`;
 
 export const metadata: Metadata = {
