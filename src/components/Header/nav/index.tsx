@@ -33,6 +33,10 @@ export function Nav({ setIsActive }: Props) {
 
   const handleLinkClick = (data: NavItem) => {
     setIsActive(false);
+    if (data.title === "Work") {
+      window.location.href = "/work";
+      return;
+    }
     handleSmoothScroll(data.ref);
   };
 

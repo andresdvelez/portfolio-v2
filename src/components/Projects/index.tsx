@@ -44,7 +44,11 @@ export function Projects() {
       </div>
       <Scene inView={inView} activeMenu={activeMenu} />
       <div className="flex gap-5 mx-12 md:mx-[200px] mb-16 md:mb-24">
-        <RoundedButton onClick={() => {}}>
+        <RoundedButton
+          onClick={() => {
+            window.location.href = "/work";
+          }}
+        >
           <p className="py-1">More works</p>
         </RoundedButton>
       </div>

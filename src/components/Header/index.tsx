@@ -11,7 +11,8 @@ import { useSmoothScrollContext } from "@/context/ref-scroll";
 export const Header = () => {
   const { header, button, setIsActive, isActive } = useHeader();
 
-  const { handleSmoothScroll, workRef, contactRef } = useSmoothScrollContext();
+  const { handleSmoothScroll, workRef, contactRef, homeRef } =
+    useSmoothScrollContext();
 
   const HeaderLinks = [
     {
@@ -30,7 +31,19 @@ export const Header = () => {
         ref={header}
         className=" top-0 z-10 flex w-full items-center justify-between p-9 font-light"
       >
-        <div className="flex cursor-pointer group">
+        <div
+          className="flex cursor-pointer group"
+          onClick={() => {
+            if (
+              typeof window !== "undefined" &&
+              window.location.pathname !== "/"
+            ) {
+              window.location.href = "/";
+            } else {
+              handleSmoothScroll(homeRef);
+            }
+          }}
+        >
           <p className="transition-transform duration-500 ease-[cubic-bezier(0.76, 0, 0.24, 1)] mr-2 group-hover:-rotate-[360deg]">
             ©
           </p>
