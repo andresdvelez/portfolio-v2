@@ -14,7 +14,7 @@ body {
 }
 
 .content-container {
-  @apply px-6 lg:px-[160px]
+  @apply px-6 lg:px-[160px];
 }
 
 /* Custom scrollbar styles */
@@ -30,7 +30,6 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background-color: #171717;
 }
-
 
 /* Header */
 .headerButtonContainer {
@@ -167,4 +166,20 @@ body {
   z-index: 50;
   position: absolute;
   box-shadow: 0px 60px 50px rgba(0, 0, 0, 0.748);
+}
+
+/* Grain overlay utility for images/containers */
+.grainy {
+  position: relative;
+}
+
+.grainy::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noise)" opacity="0.15"/></svg>');
+  background-repeat: repeat;
+  mix-blend-mode: overlay;
+  border-radius: inherit;
 }

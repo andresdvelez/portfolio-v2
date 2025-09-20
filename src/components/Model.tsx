@@ -5,7 +5,7 @@ import { useFrame, useThree } from "@react-three/fiber";
 import { motion } from "framer-motion-3d";
 import { animate, useMotionValue, useTransform } from "framer-motion";
 import { useTexture, useAspect } from "@react-three/drei";
-import { projects } from "@/data/projects";
+import { popularProjects } from "@/data/projects";
 import useDimension from "@/hooks/useDimensions";
 import useMouse from "@/hooks/useMouse";
 import * as THREE from "three";
@@ -18,7 +18,7 @@ export default function Model({ activeMenu }: { activeMenu: number | null }) {
   const mouse = useMouse();
   const opacity = useMotionValue(0);
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const textures = projects.map((project) => useTexture(project.src));
+  const textures = popularProjects.map((project) => useTexture(project.src));
   const { width, height } = textures[0].image;
   const lerp = (x: number, y: number, a: number) => x * (1 - a) + y * a;
 

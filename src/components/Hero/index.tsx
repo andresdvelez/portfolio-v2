@@ -91,13 +91,15 @@ export const Hero = () => {
         /> */}
         </aside>
         <Image
-          src="/mobile-screenshot.webp"
-          alt="Indahouse project mockup"
-          width={600}
-          height={400}
-          className="z-0 hidden lg:block"
+          src="/me.png"
+          alt="Andrés photo"
+          width={520}
+          height={520}
+          className="z-0 hidden lg:block grainy"
           classNames={{
-            wrapper: "flex items-center justify-center",
+            wrapper:
+              "flex items-center justify-center w-[360px] h-[360px] md:w-[460px] md:h-[460px] lg:w-[520px] lg:h-[520px] rounded-full overflow-hidden",
+            img: "object-cover object-[50%_0%] w-full h-full rounded-full contrast-[1.1] brightness-[0.9]",
           }}
         />
       </aside>

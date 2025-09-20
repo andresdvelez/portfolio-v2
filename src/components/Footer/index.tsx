@@ -42,8 +42,13 @@ export function Footer() {
       <div className="pt-[200px] w-full max-w-[1800px]">
         <div className="border-b border-gray-600 pb-[100px] mx-8 md:mx-12 lg:mx-[200px] relative">
           <span className="flex items-center">
-            <div className="w-[60px] h-[60px] md:w-[100px] md:h-[100px] relative rounded-full overflow-hidden">
-              <Image fill={true} alt={"image"} src={`/personal.webp`} />
+            <div className="w-[60px] h-[60px] md:w-[100px] md:h-[100px] relative rounded-full overflow-hidden grainy">
+              <Image
+                fill={true}
+                alt={"Andrés photo"}
+                src={`/me.png`}
+                className="object-cover object-[50%_0%] rounded-full contrast-[1.1] brightness-[0.9]"
+              />
             </div>
             <h3 className="ml-3 text-4xl md:text-[5vw] font-light m-0">
               Let&apos;s work

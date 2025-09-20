@@ -22,12 +22,17 @@ export const useHeader = () => {
       ? window.innerHeight - window.innerHeight
       : window.innerHeight - 800;
 
-    // gsap.set(button.current, { scale: mediaQuery ? 1 : 0 });
+    // Ensure correct initial state on first render
+    const shouldShowInitially = mediaQuery || window.scrollY > 10;
+    gsap.set(button.current, {
+      scale: shouldShowInitially ? 1 : 0,
+      pointerEvents: shouldShowInitially ? "auto" : "none",
+    });
 
     gsap.to(button.current, {
       scrollTrigger: {
         trigger: document.documentElement,
-        start: mediaQuery ? "top top" : "0",
+        start: "top top",
         end: endScroll,
         immediateRender: false,
         onUpdate: (self) => {
@@ -37,6 +42,8 @@ export const useHeader = () => {
               scale: 1,
               duration: 0.25,
               ease: "power1.out",
+              onStart: () =>
+                gsap.set(button.current, { pointerEvents: "auto" }),
             });
           } else if (self.direction === -1 && self.progress < 0.1) {
             // Scrolling up and near the top
@@ -44,9 +51,18 @@ export const useHeader = () => {
               scale: 0,
               duration: 0.25,
               ease: "power1.out",
+              onComplete: () =>
+                gsap.set(button.current, { pointerEvents: "none" }),
             });
             setIsActive(false);
           }
+        },
+        onRefresh: () => {
+          const show = mediaQuery || window.scrollY > 10;
+          gsap.set(button.current, {
+            scale: show ? 1 : 0,
+            pointerEvents: show ? "auto" : "none",
+          });
         },
       },
     });
