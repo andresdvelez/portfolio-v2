@@ -54,7 +54,7 @@ export default function WorkPage() {
 
       <div className="flex justify-center mt-16">
         <Magnetic>
-          <RoundedButton>
+          <RoundedButton onClick={() => {}}>
             <p className="py-1">Load more</p>
           </RoundedButton>
         </Magnetic>
