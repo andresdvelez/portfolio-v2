@@ -1,0 +1,20 @@
+# robots.txt para www.andresvelez.co
+# Portafolio de Andrés Vélez - Desarrollador Full Stack
+
+User-agent: *
+Allow: /
+Allow: /work
+
+Sitemap: https://www.andresvelez.co/sitemap.xml
+
+# Optimización para Google
+User-agent: Googlebot
+Allow: /
+Allow: /work
+
+# Optimización para Bing
+User-agent: Bingbot
+Allow: /
+Allow: /work
+
+

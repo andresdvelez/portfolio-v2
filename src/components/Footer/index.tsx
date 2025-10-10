@@ -45,7 +45,7 @@ export function Footer() {
             <div className="w-[60px] h-[60px] md:w-[100px] md:h-[100px] relative rounded-full overflow-hidden grainy">
               <Image
                 fill={true}
-                alt={"Andrés photo"}
+                alt={"Andrés Vélez - Full Stack Developer"}
                 src={`/me.png`}
                 className="object-cover object-[50%_0%] rounded-full contrast-[1.1] brightness-[0.9]"
               />
@@ -62,7 +62,9 @@ export function Footer() {
             className="absolute left-[calc(100%-400px)] top-[calc(100%-75px)]"
           >
             <RoundedButton
-              onClick={() => {}}
+              onClick={() => {
+                window.location.href = "mailto:advelezs@gmail.com";
+              }}
               backgroundColor={"#334BD3"}
               className="w-[140px] h-[140px] md:w-[180px] md:h-[180px] bg-[#455CE9] text-white rounded-full flex items-center justify-center cursor-pointer relative overflow-hidden"
             >
@@ -87,7 +89,11 @@ export function Footer() {
           </motion.svg>
         </div>
         <div className="flex gap-5 mt-[160px] lg:mt-[100px] mx-12 lg:mx-[200px] self-start">
-          <RoundedButton onClick={() => {}}>
+          <RoundedButton
+            onClick={() => {
+              window.location.href = "mailto:advelezs@gmail.com";
+            }}
+          >
             <p>advelezs@gmail.com</p>
           </RoundedButton>
         </div>
@@ -103,10 +109,10 @@ export function Footer() {
             </span>
             <span className="flex flex-col gap-3.5">
               <h3 className="text-gray-500 cursor-default font-light text-base">
-                Current hour
+                Local time
               </h3>
               <p className="cursor-pointer hover:underline">
-                {colombiaTime} UTC-2
+                {colombiaTime} UTC-5
               </p>
             </span>
           </div>
@@ -122,6 +128,7 @@ export function Footer() {
                   target="_blank"
                   href="https://www.instagram.com/andresvelezs/"
                   className="cursor-pointer hover:underline"
+                  aria-label="Andrés Vélez Instagram"
                 >
                   Instagram
                 </Link>
@@ -134,8 +141,9 @@ export function Footer() {
                   target="_blank"
                   href="https://www.linkedin.com/in/andres-velez-su/"
                   className="cursor-pointer hover:underline"
+                  aria-label="Andrés Vélez LinkedIn"
                 >
-                  Linkedin
+                  LinkedIn
                 </Link>
               </Magnetic>
             </div>

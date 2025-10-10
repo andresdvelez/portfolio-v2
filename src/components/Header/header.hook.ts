@@ -17,13 +17,10 @@ export const useHeader = () => {
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    const mediaQuery = window.innerWidth < 768;
-    const endScroll = mediaQuery
-      ? window.innerHeight - window.innerHeight
-      : window.innerHeight - 800;
+    const endScroll = window.innerHeight - 800;
 
-    // Ensure correct initial state on first render
-    const shouldShowInitially = mediaQuery || window.scrollY > 10;
+    // Set initial state based on scroll position
+    const shouldShowInitially = window.scrollY > 10;
     gsap.set(button.current, {
       scale: shouldShowInitially ? 1 : 0,
       pointerEvents: shouldShowInitially ? "auto" : "none",
@@ -60,7 +57,7 @@ export const useHeader = () => {
           }
         },
         onRefresh: () => {
-          const show = mediaQuery || window.scrollY > 10;
+          const show = window.scrollY > 10;
           gsap.set(button.current, {
             scale: show ? 1 : 0,
             pointerEvents: show ? "auto" : "none",

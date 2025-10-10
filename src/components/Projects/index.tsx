@@ -16,7 +16,7 @@ export function Projects() {
 
   return (
     <section className="flex flex-col items-center mt-[100px] pb-24 md:pb-28 content-container z-10 bg-background min-h-[80svh] gap-2 relative">
-      <p className="text-xl text-start w-full">Most popular</p>
+      <p className="text-xl text-start w-full">Featured projects</p>
       <div
         ref={topRightCornerRef}
         className="relative mix-blend-difference z-10 text-white w-full mb-8"

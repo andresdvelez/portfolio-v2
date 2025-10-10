@@ -1,36 +1,179 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 Portafolio de Andrés Vélez
 
-## Getting Started
+Portafolio profesional de Andrés Vélez - Desarrollador de Software Full Stack.
 
-First, run the development server:
+**🌐 Sitio en producción**: [www.andresvelez.co](https://www.andresvelez.co)
+
+---
+
+## 📋 Descripción
+
+Portafolio personal optimizado para SEO que presenta mi experiencia como desarrollador Full Stack, co-fundador de Norvik Tech y Ganado Co, con especialización en React, Next.js, TypeScript, Blockchain e Inteligencia Artificial.
+
+## 🛠️ Stack Tecnológico
+
+- **Framework**: Next.js 15 (App Router)
+- **Lenguaje**: TypeScript
+- **Estilos**: Tailwind CSS
+- **UI Components**: NextUI
+- **Animaciones**: Framer Motion
+- **Package Manager**: Bun
+
+## 🚀 Desarrollo Local
+
+### Requisitos Previos
+
+- Node.js 18+ o Bun instalado
+- Git
+
+### Instalación
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
+# Clonar el repositorio
+git clone [tu-repositorio]
+
+# Instalar dependencias
+bun install
+
+# Ejecutar en desarrollo
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abre [http://localhost:3000](http://localhost:3000) en tu navegador.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Variables de Entorno
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Crea un archivo `.env.local` con:
 
-## Learn More
+```bash
+# URL base del sitio
+NEXT_PUBLIC_BASE_URL=https://www.andresvelez.co
 
-To learn more about Next.js, take a look at the following resources:
+# Para desarrollo local, usa:
+# NEXT_PUBLIC_BASE_URL=http://localhost:3000
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📦 Construcción para Producción
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+# Construir el proyecto
+bun run build
 
-## Deploy on Vercel
+# Ejecutar en producción
+bun start
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📊 Características SEO
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Este portafolio está completamente optimizado para SEO con:
+
+- ✅ **Metadata completa** con keywords estratégicas
+- ✅ **Schema.org JSON-LD** tipo "Person"
+- ✅ **Open Graph** y Twitter Cards
+- ✅ **Sitemap.xml** con imágenes
+- ✅ **Robots.txt** optimizado
+- ✅ **Alt texts** descriptivos en todas las imágenes
+- ✅ **Contenido en español** para audiencia colombiana
+- ✅ **Locale es-CO** (Colombia)
+
+Para más detalles, consulta: [`SEO-OPTIMIZATION.md`](./SEO-OPTIMIZATION.md)
+
+## 📁 Estructura del Proyecto
+
+```
+portfolio-v2/
+├── public/
+│   ├── me.png              # Foto de perfil
+│   ├── projects/           # Imágenes de proyectos
+│   ├── robots.txt          # Configuración para crawlers
+│   └── sitemap.xml         # Mapa del sitio
+├── src/
+│   ├── app/
+│   │   ├── layout.tsx      # Layout principal con metadata
+│   │   ├── page.tsx        # Página principal
+│   │   └── work/           # Página de proyectos
+│   ├── components/
+│   │   ├── About.tsx       # Sección "Sobre mí"
+│   │   ├── Hero/           # Hero section
+│   │   ├── Projects/       # Sección de proyectos
+│   │   ├── Footer/         # Footer con contacto
+│   │   └── Header/         # Header y navegación
+│   ├── data/
+│   │   └── projects.ts     # Data de proyectos
+│   └── ...
+└── ...
+```
+
+## 🎨 Personalización
+
+### Actualizar Información Personal
+
+1. **Metadata**: Edita `src/app/layout.tsx`
+2. **Contenido "Sobre mí"**: Edita `src/components/About.tsx`
+3. **Proyectos**: Edita `src/data/projects.ts`
+4. **Redes sociales**: Edita `src/components/Footer/index.tsx`
+
+### Actualizar URL del Sitio
+
+Si cambias el dominio, actualiza estos archivos:
+
+1. `src/app/layout.tsx` - Canonical URL
+2. `public/sitemap.xml` - URLs del sitemap
+3. `public/robots.txt` - URL del sitemap
+4. Variable de entorno `NEXT_PUBLIC_BASE_URL`
+
+## 📈 Post-Deployment
+
+Después de deployar:
+
+1. ✅ Verifica: `https://www.andresvelez.co/robots.txt`
+2. ✅ Verifica: `https://www.andresvelez.co/sitemap.xml`
+3. ✅ Registra el sitio en [Google Search Console](https://search.google.com/search-console)
+4. ✅ Envía el sitemap a Google
+5. ✅ Prueba Rich Results: [Google Rich Results Test](https://search.google.com/test/rich-results)
+
+## 📚 Documentación Adicional
+
+- [`SEO-OPTIMIZATION.md`](./SEO-OPTIMIZATION.md) - Guía completa de optimización SEO
+- [`MEJORAS-IMPLEMENTADAS.md`](./MEJORAS-IMPLEMENTADAS.md) - Resumen de mejoras
+- [`ANTES-DESPUES.md`](./ANTES-DESPUES.md) - Comparación antes/después
+
+## 🤝 Contacto
+
+- **Email**: advelezs@gmail.com
+- **LinkedIn**: [andres-velez-su](https://www.linkedin.com/in/andres-velez-su/)
+- **Instagram**: [@andresvelezs](https://www.instagram.com/andresvelezs/)
+
+---
+
+## 🔧 Scripts Disponibles
+
+```bash
+# Desarrollo
+bun dev
+
+# Construcción
+bun run build
+
+# Producción
+bun start
+
+# Linting
+bun run lint
+```
+
+## 📝 Notas
+
+- El proyecto usa **Bun** como package manager [[memory:7689139]]
+- Todo el contenido está en **español** para Colombia [[memory:5490013]]
+- Los iconos usan **unplugin-icons** [[memory:7758670]]
+
+---
+
+**Desarrollado por**: Andrés Vélez  
+**Stack**: Next.js 15 + TypeScript + Tailwind CSS  
+**Deploy**: [www.andresvelez.co](https://www.andresvelez.co)
+
+## 📄 Licencia
+
+© 2025 Andrés Vélez. Todos los derechos reservados.

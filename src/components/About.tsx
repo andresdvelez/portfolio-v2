@@ -18,8 +18,9 @@ export const About = () => {
     >
       <p className="w-1/4 text-xl">About</p>
       <p className="w-full lg:w-[90%] pr-0 lg:pr-[237px] text-xl md:text-3xl lg:text-[34px] leading-[1.3] md:leading-[1.4]">
-        Over 4 years of expertise crafting and expanding user-focused products.
-        Presently, I am building development teams around the world, I am
+        With over 5 years of experience working with multinational companies and
+        internationally recognized brands, I specialize in developing technology
+        companies and projects that generate real impact. Currently, I am
         co-founder of{" "}
         <Link
           href="https://www.norvik.tech/es"
@@ -29,7 +30,7 @@ export const About = () => {
           {inView && (
             <Image
               src="https://cdn.prod.website-files.com/665ea416583f76e1fde5faa5/6668891d705a2a0193a968a9_swash.svg"
-              alt=""
+              alt="Norvik Tech - Software development company"
               fill
               className="absolute !inset-y-6"
             />
@@ -45,13 +46,17 @@ export const About = () => {
           {inView && (
             <Image
               src="https://cdn.prod.website-files.com/665ea416583f76e1fde5faa5/6668891d705a2a0193a968a9_swash.svg"
-              alt=""
+              alt="Ganado Co - Livestock management platform"
               fill
               className="absolute !inset-y-6"
             />
           )}
-          Ganado co
+          Ganado Co
         </Link>
+        , where we lead technological innovation and digital transformation of
+        companies across different sectors. My approach combines strategic
+        vision with effective execution, building solutions that not only meet
+        objectives but transform industries.
       </p>
     </section>
   );

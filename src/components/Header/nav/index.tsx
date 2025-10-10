@@ -8,9 +8,10 @@ import { motion } from "framer-motion";
 
 interface Props {
   setIsActive: Dispatch<SetStateAction<boolean>>;
+  isDark: boolean;
 }
 
-export function Nav({ setIsActive }: Props) {
+export function Nav({ setIsActive, isDark }: Props) {
   const { handleSmoothScroll, workRef, contactRef, homeRef } =
     useSmoothScrollContext();
 
@@ -18,22 +19,22 @@ export function Nav({ setIsActive }: Props) {
 
   const navItems: Array<NavItem> = [
     {
-      title: "Home",
+      title: "Inicio",
       ref: homeRef,
     },
     {
-      title: "Work",
+      title: "Proyectos",
       ref: workRef,
     },
     {
-      title: "Contact",
+      title: "Contacto",
       ref: contactRef,
     },
   ];
 
   const handleLinkClick = (data: NavItem) => {
     setIsActive(false);
-    if (data.title === "Work") {
+    if (data.title === "Proyectos") {
       window.location.href = "/work";
       return;
     }
@@ -47,11 +48,14 @@ export function Nav({ setIsActive }: Props) {
       animate="enter"
       exit="exit"
       className="menu w-screen lg:w-max z-30 h-screen"
+      data-theme={isDark ? "dark" : "light"}
     >
       <div className="body p-[50px] md:p-[100px] pb-36">
         <div className="nav">
           <div className="header">
-            <p>Navigation</p>
+            <p className={isDark ? "text-white/60" : "text-black/60"}>
+              Navegación
+            </p>
           </div>
           {navItems.map((data, index) => (
             // <LinkComponent
@@ -61,7 +65,9 @@ export function Nav({ setIsActive }: Props) {
             //   setSelectedIndicator={setSelectedIndicator}
             // />
             <motion.div
-              className="relative flex items-center text-white font-light cursor-pointer"
+              className={`relative flex items-center font-light cursor-pointer transition-colors ${
+                isDark ? "text-white" : "text-black"
+              }`}
               custom={index}
               key={data.title}
               variants={slide}
@@ -73,15 +79,17 @@ export function Nav({ setIsActive }: Props) {
               <motion.div
                 variants={scale}
                 animate={selectedIndicator === data.title ? "open" : "closed"}
-                className="absolute left-[-30px] h-2.5 w-2.5 rounded-full bg-white"
+                className={`absolute left-[-30px] h-2.5 w-2.5 rounded-full ${
+                  isDark ? "bg-white" : "bg-black"
+                }`}
               ></motion.div>
               {data.title}
             </motion.div>
           ))}
         </div>
-        <Footer />
+        <Footer isDark={isDark} />
       </div>
-      <Curve />
+      <Curve isDark={isDark} />
     </motion.div>
   );
 }

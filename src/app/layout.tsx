@@ -31,32 +31,67 @@ const OPEN_GRAPH_IMAGE_URL = `${BASE_URL}/thumbnail.jpg`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
-  title: "Andres Velez | Software Developer",
-  description: "Andres Velez Software Developer's Portfolio",
+  title: "Andrés Vélez | Full Stack Software Developer & Co-Founder",
+  description:
+    "Andrés Vélez is a Full Stack software developer with over 5 years of experience working with multinational companies and internationally recognized brands. Co-founder of Norvik Tech and Ganado Co, specialized in developing technology companies and projects that generate real impact. Based in Medellín, Colombia.",
+  keywords: [
+    "Andrés Vélez",
+    "Andres Velez",
+    "Full Stack Developer",
+    "Software Developer Medellín",
+    "React Developer Colombia",
+    "Next.js Developer",
+    "TypeScript Expert",
+    "Norvik Tech",
+    "Ganado Co",
+    "Blockchain Developer",
+    "Web Developer Medellín",
+    "Software Engineer Colombia",
+    "Full Stack Colombia",
+    "Andrés Vélez Developer",
+  ],
+  authors: [{ name: "Andrés Vélez" }],
+  creator: "Andrés Vélez",
+  publisher: "Andrés Vélez",
   alternates: {
-    canonical: "https://andresvelez.online",
+    canonical: "https://www.andresvelez.co",
   },
   openGraph: {
-    title: "Andres Velez | Software Developer",
-    description: "Andres Velez Software Developer's Portfolio",
+    title: "Andrés Vélez | Full Stack Software Developer & Tech Entrepreneur",
+    description:
+      "Full Stack Developer with +5 years of experience working with multinational companies and recognized brands. Co-founder of Norvik Tech and Ganado Co. Specialized in developing technology companies and projects from Medellín, Colombia.",
     url: BASE_URL,
-    siteName: "Andres Velez | Software Developer",
+    siteName: "Andrés Vélez - Professional Portfolio",
     images: [
       {
         url: OPEN_GRAPH_IMAGE_URL,
         width: 1200,
         height: 630,
-        alt: "Andres Velez | Software Developer",
+        alt: "Andrés Vélez - Full Stack Software Developer in Medellín, Colombia",
       },
     ],
     locale: "en_US",
-    type: "website",
+    type: "profile",
+    firstName: "Andrés",
+    lastName: "Vélez",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Andres Velez | Software Developer",
-    description: "Andres Velez Software Developer's Portfolio",
+    title: "Andrés Vélez | Full Stack Developer & Co-Founder",
+    description:
+      "Full Stack Developer +5 years exp. Co-founder @NorvikTech & @GanadoCo. Specialized in developing technology companies and projects",
     images: [OPEN_GRAPH_IMAGE_URL],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 };
 
@@ -65,8 +100,76 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const personSchema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Andrés Vélez",
+    alternateName: "Andres Velez",
+    url: BASE_URL,
+    image: `${BASE_URL}/me.png`,
+    jobTitle: "Full Stack Software Developer",
+    description:
+      "Full Stack software developer with over 5 years of experience working with multinational companies and recognized brands. Co-founder of Norvik Tech and Ganado Co, specialized in developing technology companies and projects.",
+    alumniOf: {
+      "@type": "EducationalOrganization",
+      name: "Universidad de Antioquia",
+    },
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Medellín",
+      addressRegion: "Antioquia",
+      addressCountry: "CO",
+    },
+    email: "advelezs@gmail.com",
+    sameAs: [
+      "https://www.linkedin.com/in/andres-velez-su/",
+      "https://www.instagram.com/andresvelezs/",
+      "https://github.com/andresvelez",
+      "https://www.norvik.tech/es",
+      "https://ganado.co/",
+    ],
+    knowsAbout: [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "JavaScript",
+      "Node.js",
+      "Blockchain",
+      "Inteligencia Artificial",
+      "Desarrollo Web",
+      "Arquitectura de Software",
+      "Full Stack Development",
+    ],
+    hasOccupation: [
+      {
+        "@type": "Occupation",
+        name: "Co-Founder and Developer",
+        occupationLocation: {
+          "@type": "Organization",
+          name: "Norvik Tech",
+          url: "https://www.norvik.tech/es",
+        },
+      },
+      {
+        "@type": "Occupation",
+        name: "Co-Founder",
+        occupationLocation: {
+          "@type": "Organization",
+          name: "Ganado Co",
+          url: "https://ganado.co/",
+        },
+      },
+    ],
+  };
+
   return (
     <html lang="en">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+        />
+      </head>
       <body
         className={` ${saintRegus.variable} ${inter.className} antialiased w-screen overflow-x-hidden`}
       >

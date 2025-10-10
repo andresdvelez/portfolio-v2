@@ -1,7 +1,11 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-export function Curve() {
+interface Props {
+  isDark: boolean;
+}
+
+export function Curve({ isDark }: Props) {
   const initialPath = `M100 0 L100 ${window.innerHeight} Q-100 ${
     window.innerHeight / 2
   } 100 0`;
@@ -22,13 +26,16 @@ export function Curve() {
   };
 
   return (
-    <svg className="absolute top-0 left-[-99px] w-[100px] h-full fill-[#1c1d20]">
-      <motion.path
-        variants={curve}
-        initial="initial"
-        animate="enter"
-        exit="exit"
-      />
-    </svg>
+    <div className="absolute top-0 left-[-99px] w-[100px] h-full overflow-hidden">
+      <svg className="w-full h-full transition-colors">
+        <motion.path
+          className={isDark ? "fill-black/50" : "fill-white/85"}
+          variants={curve}
+          initial="initial"
+          animate="enter"
+          exit="exit"
+        />
+      </svg>
+    </div>
   );
 }

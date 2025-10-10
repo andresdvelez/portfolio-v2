@@ -7,6 +7,9 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 
+// Metadata will be set through layout or you can use Next.js 13+ metadata API
+// For now, we'll keep the client component as is
+
 export default function WorkPage() {
   return (
     <main className="relative z-20 content-container pt-24 pb-40 md:pb-52 bg-background">
@@ -32,7 +35,7 @@ export default function WorkPage() {
               <div className="relative w-full aspect-[16/10] overflow-hidden">
                 <Image
                   src={p.src}
-                  alt={p.title}
+                  alt={`${p.title} - ${p.description}`}
                   fill
                   className="object-cover"
                 />
@@ -44,6 +47,7 @@ export default function WorkPage() {
                 href={p.href}
                 target="_blank"
                 className="cursor-pointer hover:underline"
+                aria-label={`Visit ${p.title}`}
               >
                 Visit ↗
               </Link>
