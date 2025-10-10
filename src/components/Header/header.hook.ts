@@ -17,9 +17,20 @@ export const useHeader = () => {
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
+    const isMobileOrTablet = window.innerWidth < 1024; // lg breakpoint
+
+    // In mobile/tablet, always show the button
+    if (isMobileOrTablet) {
+      gsap.set(button.current, {
+        scale: 1,
+        pointerEvents: "auto",
+      });
+      return; // Skip desktop scroll animation
+    }
+
+    // Desktop behavior: show on scroll
     const endScroll = window.innerHeight - 800;
 
-    // Set initial state based on scroll position
     const shouldShowInitially = window.scrollY > 10;
     gsap.set(button.current, {
       scale: shouldShowInitially ? 1 : 0,

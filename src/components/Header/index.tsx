@@ -32,10 +32,10 @@ export const Header = () => {
       <div
         ref={header}
         className={clsx(
-          "dynamic-header-theme fixed top-6 left-1/2 -translate-x-1/2 z-50 flex items-center justify-between px-8 py-4 font-light backdrop-blur-md rounded-full shadow-lg w-[90%] max-w-[1200px] transition-colors duration-300",
-          isDark
-            ? "bg-white/10 border border-white/[0.15] text-white"
-            : "bg-black/30 border border-black/[0.3] text-black"
+          "dynamic-header-theme fixed top-6 left-4 sm:left-6 z-50 flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 font-light backdrop-blur-xl rounded-full transition-colors duration-300",
+          "w-[calc(100%-124px)] sm:w-[calc(100%-140px)] md:w-[calc(100%-180px)] lg:w-[90%] lg:left-1/2 lg:-translate-x-1/2 max-w-[1200px]",
+          "bg-white/[0.03] border border-white/[0.08]",
+          isDark ? "text-white" : "text-black" // Dynamic text color for all screen sizes
         )}
       >
         <div

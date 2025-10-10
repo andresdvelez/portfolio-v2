@@ -1,101 +1,140 @@
 import { useEffect, useState } from "react";
 
 export const useHeaderTheme = () => {
-  const [isDark, setIsDark] = useState(true);
+  const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
     const checkBackground = () => {
-      // Get the element behind the header at the center position
       const headerElement = document.querySelector(".dynamic-header-theme");
       if (!headerElement) {
-        // Retry after a short delay if element not found yet
         setTimeout(checkBackground, 50);
         return;
       }
 
       const rect = headerElement.getBoundingClientRect();
-      const centerX = rect.left + rect.width / 2;
-      const centerY = rect.top + rect.height / 2;
+      const headerBottom = rect.bottom;
+      const headerCenter = rect.left + rect.width / 2;
 
-      // Temporarily hide header to get element behind it
+      // Check multiple points in the viewport to find the actual content section
+      const checkPoints = [
+        { x: headerCenter, y: headerBottom + 100 }, // 100px below header
+        { x: headerCenter, y: headerBottom + 300 }, // 300px below header
+        { x: headerCenter, y: window.innerHeight / 2 }, // Middle of viewport
+        { x: headerCenter, y: window.innerHeight - 100 }, // Near bottom of viewport
+      ];
+
+      // Temporarily disable pointer events on the header
       const originalPointerEvents = (headerElement as HTMLElement).style
         .pointerEvents;
       (headerElement as HTMLElement).style.pointerEvents = "none";
 
-      const elementBehind = document.elementFromPoint(centerX, centerY);
-      (headerElement as HTMLElement).style.pointerEvents =
-        originalPointerEvents;
+      let detectedColor: string | null = null;
 
-      if (elementBehind) {
-        // Function to find the first element with a solid background color
+      // Try each checkpoint until we find a content section
+      for (const point of checkPoints) {
+        const elementAtPoint = document.elementFromPoint(point.x, point.y);
+        if (!elementAtPoint) continue;
+
+        // Function to find the first non-transparent background color
+        // Skip elements with negative z-index or canvas elements
         const findSolidBackground = (
           element: Element | null
         ): string | null => {
           let currentElement = element;
           let depth = 0;
-          const maxDepth = 20; // Prevent infinite loops
+          const maxDepth = 20;
 
           while (currentElement && depth < maxDepth) {
-            const computedStyle = window.getComputedStyle(currentElement);
-            const bgColor = computedStyle.backgroundColor;
+            // Skip canvas elements (usually background animations)
+            if (currentElement.tagName === "CANVAS") {
+              currentElement = currentElement.parentElement;
+              depth++;
+              continue;
+            }
 
-            // Parse RGBA
+            const computedStyle = window.getComputedStyle(currentElement);
+            const zIndex = computedStyle.zIndex;
+
+            // Skip elements with negative z-index (background layers)
+            if (zIndex && parseInt(zIndex) < 0) {
+              currentElement = currentElement.parentElement;
+              depth++;
+              continue;
+            }
+
+            const bgColor = computedStyle.backgroundColor;
             const match = bgColor.match(
               /rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/
             );
 
             if (match) {
-              const r = parseInt(match[1]);
-              const g = parseInt(match[2]);
-              const b = parseInt(match[3]);
               const a = match[4] ? parseFloat(match[4]) : 1;
 
-              // If alpha is not 0 (not fully transparent), use this color
-              if (a > 0.1) {
+              // If the alpha is greater than 0.05, consider it a solid color
+              if (a > 0.05) {
                 return bgColor;
               }
             }
 
-            // Move to parent element
             currentElement = currentElement.parentElement;
             depth++;
           }
 
-          // If no solid color found, default to white
-          return "rgb(255, 255, 255)";
+          return null;
         };
 
-        const bgColor = findSolidBackground(elementBehind);
-
-        // Parse RGB color
-        if (bgColor) {
-          const rgb = bgColor.match(/\d+/g);
-          if (rgb && rgb.length >= 3) {
-            const r = parseInt(rgb[0]);
-            const g = parseInt(rgb[1]);
-            const b = parseInt(rgb[2]);
-
-            // Calculate relative luminance using the formula
-            const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
-
-            // If luminance > 0.5, background is light
-            setIsDark(luminance <= 0.5);
-          }
+        const color = findSolidBackground(elementAtPoint);
+        if (color) {
+          detectedColor = color;
+          break; // Found a solid color, use it
         }
+      }
+
+      (headerElement as HTMLElement).style.pointerEvents =
+        originalPointerEvents;
+
+      // Default to white if no color found
+      const finalColor = detectedColor || "rgb(255, 255, 255)";
+
+      // Parse RGB values
+      const rgb = finalColor.match(/\d+/g);
+
+      if (rgb && rgb.length >= 3) {
+        const r = parseInt(rgb[0]);
+        const g = parseInt(rgb[1]);
+        const b = parseInt(rgb[2]);
+
+        // Calculate relative luminance
+        const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+
+        // If luminance > 0.6, background is light
+        setIsDark(luminance < 0.6);
       }
     };
 
     // Check on mount with small delay to ensure DOM is ready
     const timeoutId = setTimeout(checkBackground, 100);
 
+    // Check on scroll with debounce
+    let scrollTimeout: ReturnType<typeof setTimeout>;
+    const handleScroll = () => {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(checkBackground, 50);
+    };
+
     // Check on scroll
-    window.addEventListener("scroll", checkBackground);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     // Check on resize
     window.addEventListener("resize", checkBackground);
 
+    // Also check periodically to catch any missed changes
+    const intervalId = setInterval(checkBackground, 500);
+
     return () => {
       clearTimeout(timeoutId);
-      window.removeEventListener("scroll", checkBackground);
+      clearTimeout(scrollTimeout);
+      clearInterval(intervalId);
+      window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", checkBackground);
     };
   }, []);

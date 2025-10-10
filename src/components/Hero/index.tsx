@@ -36,7 +36,7 @@ export const Hero = () => {
   return (
     <section
       ref={targetRef}
-      className="h-screen flex flex-col justify-center items-center relative overflow-hidden"
+      className="min-h-screen lg:h-screen flex flex-col justify-center items-center relative overflow-hidden py-24 lg:py-0"
     >
       <div className="absolute -inset-y-4 h-3 w-3" ref={homeRef}></div>
 
@@ -45,14 +45,14 @@ export const Hero = () => {
 
       <motion.div
         style={{ opacity }}
-        className="w-full max-w-[1300px] mx-auto px-6 md:px-8 lg:px-12 relative z-10"
+        className="w-full max-w-[1300px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 relative z-10"
       >
         {/* Available badge */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="mb-6 md:mb-8"
+          className="mb-4 md:mb-6 lg:mb-8"
         >
           <Chip
             variant="flat"
@@ -68,26 +68,28 @@ export const Hero = () => {
           </Chip>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-start">
           {/* Left Column */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="space-y-5 md:space-y-6"
+            className="space-y-4 md:space-y-5 lg:space-y-6"
           >
             {/* Main Title */}
-            <div className="space-y-3">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium leading-[1.1] tracking-tight">
+            <div className="space-y-2 md:space-y-3">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium leading-[1.1] tracking-tight">
                 Hi, I&apos;m a
                 <br />
                 <span className="text-white/90">Full Stack</span>
                 <br />
                 developer
-                <span className="text-white/30 text-4xl md:text-5xl">©</span>
+                <span className="text-white/30 text-3xl sm:text-4xl md:text-5xl">
+                  ©
+                </span>
               </h1>
 
-              <p className="text-sm md:text-base text-white/50 max-w-[480px] font-light leading-relaxed">
+              <p className="text-xs sm:text-sm md:text-base text-white/50 max-w-[480px] font-light leading-relaxed">
                 With over 5 years of experience working with multinational
                 companies and recognized brands, building impactful technology
                 solutions
@@ -98,9 +100,9 @@ export const Hero = () => {
             <div>
               <button
                 onClick={handleContact}
-                className="group relative inline-flex items-center justify-center px-6 md:px-7 py-3 bg-white/[0.03] backdrop-blur-xl border border-white/[0.08] rounded-full overflow-hidden transition-all duration-300 hover:bg-white/[0.05] hover:border-white/[0.12]"
+                className="group relative inline-flex items-center justify-center px-5 md:px-6 lg:px-7 py-2.5 md:py-3 bg-white/[0.03] backdrop-blur-xl border border-white/[0.08] rounded-full overflow-hidden transition-all duration-300 hover:bg-white/[0.05] hover:border-white/[0.12]"
               >
-                <span className="relative z-10 text-white font-medium text-sm">
+                <span className="relative z-10 text-white font-medium text-xs sm:text-sm">
                   Contact me
                 </span>
               </button>
@@ -112,9 +114,9 @@ export const Hero = () => {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="space-y-4"
+            className="space-y-3 md:space-y-4"
           >
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
               {/* Profile Image */}
               <motion.div style={{ y: y2 }} className="space-y-3">
                 <div className="relative group">
@@ -136,7 +138,7 @@ export const Hero = () => {
               </motion.div>
 
               {/* Right side: Brands Card + Social + Location */}
-              <div className="space-y-3">
+              <div className="space-y-2.5 md:space-y-3">
                 {/* Brands Card */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
@@ -148,12 +150,12 @@ export const Hero = () => {
                     isBlurred
                     shadow="none"
                   >
-                    <CardBody className="p-4 space-y-3">
-                      <div className="space-y-2">
-                        <p className="text-xs text-white/60 font-light">
+                    <CardBody className="p-3 md:p-4 space-y-2 md:space-y-3">
+                      <div className="space-y-1 md:space-y-2">
+                        <p className="text-[10px] md:text-xs text-white/60 font-light">
                           The most recent brands
                         </p>
-                        <p className="text-sm text-white/80 font-light">
+                        <p className="text-xs md:text-sm text-white/80 font-light">
                           I happily worked with ❤️
                         </p>
                       </div>
@@ -185,14 +187,14 @@ export const Hero = () => {
                 </motion.div>
 
                 {/* Social Icons Grid */}
-                <div className="grid grid-cols-3 gap-2">
+                <div className="grid grid-cols-3 gap-1.5 md:gap-2">
                   <Link
                     href="https://www.linkedin.com/in/andres-velez-su/"
                     target="_blank"
                     isExternal
                   >
-                    <div className="w-full aspect-square rounded-xl bg-white/[0.03] backdrop-blur-xl border border-white/[0.08] flex items-center justify-center hover:bg-white/[0.05] hover:border-white/[0.12] transition-all duration-300 group">
-                      <i className="icon-[mdi--linkedin] text-white/50 group-hover:text-white text-lg transition-colors duration-300"></i>
+                    <div className="w-full aspect-square rounded-lg md:rounded-xl bg-white/[0.03] backdrop-blur-xl border border-white/[0.08] flex items-center justify-center hover:bg-white/[0.05] hover:border-white/[0.12] transition-all duration-300 group">
+                      <i className="icon-[mdi--linkedin] text-white/50 group-hover:text-white text-base md:text-lg transition-colors duration-300"></i>
                     </div>
                   </Link>
                   <Link
@@ -200,8 +202,8 @@ export const Hero = () => {
                     target="_blank"
                     isExternal
                   >
-                    <div className="w-full aspect-square rounded-xl bg-white/[0.03] backdrop-blur-xl border border-white/[0.08] flex items-center justify-center hover:bg-white/[0.05] hover:border-white/[0.12] transition-all duration-300 group">
-                      <i className="icon-[mdi--instagram] text-white/50 group-hover:text-white text-lg transition-colors duration-300"></i>
+                    <div className="w-full aspect-square rounded-lg md:rounded-xl bg-white/[0.03] backdrop-blur-xl border border-white/[0.08] flex items-center justify-center hover:bg-white/[0.05] hover:border-white/[0.12] transition-all duration-300 group">
+                      <i className="icon-[mdi--instagram] text-white/50 group-hover:text-white text-base md:text-lg transition-colors duration-300"></i>
                     </div>
                   </Link>
                   <Link
@@ -209,8 +211,8 @@ export const Hero = () => {
                     target="_blank"
                     isExternal
                   >
-                    <div className="w-full aspect-square rounded-xl bg-white/[0.03] backdrop-blur-xl border border-white/[0.08] flex items-center justify-center hover:bg-white/[0.05] hover:border-white/[0.12] transition-all duration-300 group">
-                      <i className="icon-[mdi--github] text-white/50 group-hover:text-white text-lg transition-colors duration-300"></i>
+                    <div className="w-full aspect-square rounded-lg md:rounded-xl bg-white/[0.03] backdrop-blur-xl border border-white/[0.08] flex items-center justify-center hover:bg-white/[0.05] hover:border-white/[0.12] transition-all duration-300 group">
+                      <i className="icon-[mdi--github] text-white/50 group-hover:text-white text-base md:text-lg transition-colors duration-300"></i>
                     </div>
                   </Link>
                 </div>
@@ -226,15 +228,15 @@ export const Hero = () => {
                     isBlurred
                     shadow="none"
                   >
-                    <CardBody className="p-3 flex flex-row items-center gap-2">
-                      <div className="w-8 h-8 rounded-full bg-green-500/10 border border-green-500/20 flex items-center justify-center backdrop-blur-xl">
-                        <i className="icon-[mdi--map-marker] text-green-400 text-base"></i>
+                    <CardBody className="p-2.5 md:p-3 flex flex-row items-center gap-2">
+                      <div className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-green-500/10 border border-green-500/20 flex items-center justify-center backdrop-blur-xl">
+                        <i className="icon-[mdi--map-marker] text-green-400 text-sm md:text-base"></i>
                       </div>
                       <div>
-                        <p className="text-[10px] text-white/40 mb-0">
+                        <p className="text-[9px] md:text-[10px] text-white/40 mb-0">
                           Location
                         </p>
-                        <p className="text-xs font-medium text-white">
+                        <p className="text-[11px] md:text-xs font-medium text-white">
                           Medellín, CO
                         </p>
                       </div>
