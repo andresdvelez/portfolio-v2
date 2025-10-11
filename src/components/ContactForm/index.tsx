@@ -38,14 +38,22 @@ type ContactFormData = z.infer<typeof contactFormSchema>;
 
 // Hook para detectar si es mobile/tablet
 function useIsMobile() {
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(() => {
+    // Inicializar correctamente para SSR y cliente
+    if (typeof window !== 'undefined') {
+      return window.innerWidth < 1024;
+    }
+    return false;
+  });
 
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 1024); // lg breakpoint
     };
     
+    // Verificar inmediatamente al montar
     checkMobile();
+    
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
   }, []);

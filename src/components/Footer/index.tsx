@@ -170,8 +170,8 @@ export function Footer() {
           />
           
           {/* Modal Content - Desktop: centrado, Mobile: en la parte inferior */}
-          <div className="fixed inset-0 z-[9999] pointer-events-none lg:flex lg:items-center lg:justify-center lg:p-4">
-              <div className="pointer-events-auto" onClick={(e) => e.stopPropagation()}>
+          <div className="fixed inset-0 z-[9999] flex items-end lg:items-center lg:justify-center lg:p-4 pointer-events-none">
+              <div className="pointer-events-auto w-full" onClick={(e) => e.stopPropagation()}>
                 <ContactForm onClose={() => setShowContactForm(false)} />
               </div>
             </div>
