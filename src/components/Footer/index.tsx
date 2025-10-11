@@ -2,15 +2,17 @@
 
 import Image from "next/image";
 import { RoundedButton } from "../../common/RoundedButton";
-import { useScroll, motion, useTransform } from "framer-motion";
+import { useScroll, motion, useTransform, AnimatePresence } from "framer-motion";
 import { Magnetic } from "../../common/Magnetic";
 import { useSmoothScrollContext } from "@/context/ref-scroll";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Link from "next/link";
+import { ContactForm } from "../ContactForm";
 
 export function Footer() {
   const container = useRef(null);
   const { contactRef } = useSmoothScrollContext();
+  const [showContactForm, setShowContactForm] = useState(false);
 
   const { scrollYProgress } = useScroll({
     target: container,
@@ -62,9 +64,7 @@ export function Footer() {
             className="absolute left-[calc(100%-400px)] top-[calc(100%-75px)]"
           >
             <RoundedButton
-              onClick={() => {
-                window.location.href = "mailto:advelezs@gmail.com";
-              }}
+              onClick={() => setShowContactForm(true)}
               backgroundColor={"#334BD3"}
               className="w-[140px] h-[140px] md:w-[180px] md:h-[180px] bg-[#455CE9] text-white rounded-full flex items-center justify-center cursor-pointer relative overflow-hidden"
             >
@@ -88,13 +88,16 @@ export function Footer() {
             />
           </motion.svg>
         </div>
-        <div className="flex gap-5 mt-[160px] lg:mt-[100px] mx-12 lg:mx-[200px] self-start">
+        <div className="flex gap-5 mt-[160px] lg:mt-[100px] mx-12 lg:mx-[200px] self-start flex-wrap">
+          <RoundedButton onClick={() => setShowContactForm(true)}>
+            <p>contact@andresvelez.co</p>
+          </RoundedButton>
           <RoundedButton
             onClick={() => {
-              window.location.href = "mailto:advelezs@gmail.com";
+              window.location.href = "mailto:contact@andresvelez.co";
             }}
           >
-            <p>advelezs@gmail.com</p>
+            <p>Enviar email directo</p>
           </RoundedButton>
         </div>
         <div className="flex justify-between mt-20 md:mt-[200px] p-5 flex-col md:flex-row gap-4">
@@ -151,6 +154,30 @@ export function Footer() {
         </div>
       </div>
       <div ref={contactRef}></div>
+
+      {/* Modal del formulario de contacto */}
+      <AnimatePresence>
+        {showContactForm && (
+          <>
+          {/* Backdrop */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[9999]"
+            onClick={() => setShowContactForm(false)}
+          />
+          
+          {/* Modal Content - Desktop: centrado, Mobile: en la parte inferior */}
+          <div className="fixed inset-0 z-[9999] pointer-events-none lg:flex lg:items-center lg:justify-center lg:p-4">
+              <div className="pointer-events-auto" onClick={(e) => e.stopPropagation()}>
+                <ContactForm onClose={() => setShowContactForm(false)} />
+              </div>
+            </div>
+          </>
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 }

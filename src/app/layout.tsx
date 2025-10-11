@@ -120,7 +120,7 @@ export default function RootLayout({
       addressRegion: "Antioquia",
       addressCountry: "CO",
     },
-    email: "advelezs@gmail.com",
+    email: "contact@andresvelez.co",
     sameAs: [
       "https://www.linkedin.com/in/andres-velez-su/",
       "https://www.instagram.com/andresvelezs/",

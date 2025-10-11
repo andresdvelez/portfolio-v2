@@ -10,6 +10,15 @@ Portafolio profesional de Andrés Vélez - Desarrollador de Software Full Stack.
 
 Portafolio personal optimizado para SEO que presenta mi experiencia como desarrollador Full Stack, co-fundador de Norvik Tech y Ganado Co, con especialización en React, Next.js, TypeScript, Blockchain e Inteligencia Artificial.
 
+**✨ Incluye sistema de contacto seguro con:**
+- ✅ hCaptcha invisible para protección contra bots
+- ✅ Rate limiting (5 mensajes/15min por IP)
+- ✅ Detección de spam y honeypot fields
+- ✅ Validación robusta con Zod
+- ✅ Integración con Resend para envío de emails
+
+**📖 Quick Start:** [`QUICK_START.md`](./QUICK_START.md) - Setup en 5 minutos
+
 ## 🛠️ Stack Tecnológico
 
 - **Framework**: Next.js 15 (App Router)
@@ -34,6 +43,10 @@ git clone [tu-repositorio]
 
 # Instalar dependencias
 bun install
+
+# Configurar variables de entorno (ver ENV_SETUP.md)
+cp .env.example .env.local
+# Editar .env.local con tus claves
 
 # Ejecutar en desarrollo
 bun dev
@@ -134,13 +147,21 @@ Después de deployar:
 
 ## 📚 Documentación Adicional
 
+### Sistema de Contacto
+- 🚀 [`QUICK_START.md`](./QUICK_START.md) - **Setup rápido en 5 minutos**
+- [`ENV_SETUP.md`](./ENV_SETUP.md) - Configuración de variables de entorno
+- [`SECURITY.md`](./SECURITY.md) - Medidas de seguridad implementadas
+- [`CONTACT_SYSTEM.md`](./CONTACT_SYSTEM.md) - Documentación técnica completa
+- [`IMPLEMENTACION_COMPLETA.md`](./IMPLEMENTACION_COMPLETA.md) - Resumen de implementación
+
+### SEO y Mejoras
 - [`SEO-OPTIMIZATION.md`](./SEO-OPTIMIZATION.md) - Guía completa de optimización SEO
 - [`MEJORAS-IMPLEMENTADAS.md`](./MEJORAS-IMPLEMENTADAS.md) - Resumen de mejoras
 - [`ANTES-DESPUES.md`](./ANTES-DESPUES.md) - Comparación antes/después
 
 ## 🤝 Contacto
 
-- **Email**: advelezs@gmail.com
+- **Email**: contact@andresvelez.co
 - **LinkedIn**: [andres-velez-su](https://www.linkedin.com/in/andres-velez-su/)
 - **Instagram**: [@andresvelezs](https://www.instagram.com/andresvelezs/)
 
