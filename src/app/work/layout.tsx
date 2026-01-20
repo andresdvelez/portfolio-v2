@@ -43,5 +43,28 @@ export default function WorkLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  const collectionPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Andrés Vélez - Projects Portfolio",
+    description:
+      "Portfolio of projects developed by Andrés Vélez including Norvik Tech, Ganado Co, Indahouse, EthicVoice, and Blooma.",
+    url: `${BASE_URL}/work`,
+    mainEntity: {
+      "@type": "Person",
+      name: "Andrés Vélez",
+    },
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(collectionPageSchema),
+        }}
+      />
+      {children}
+    </>
+  );
 }

@@ -92,13 +92,16 @@ export function Footer() {
           <RoundedButton onClick={() => setShowContactForm(true)}>
             <p>contact@andresvelez.co</p>
           </RoundedButton>
-          <RoundedButton
-            onClick={() => {
-              window.location.href = "mailto:contact@andresvelez.co";
-            }}
-          >
-            <p>Enviar email directo</p>
-          </RoundedButton>
+          <Link href="mailto:contact@andresvelez.co" className="inline-block">
+            <RoundedButton>
+              <p>Send direct email</p>
+            </RoundedButton>
+          </Link>
+          <Link href="/work" className="inline-block">
+            <RoundedButton>
+              <p>View all projects</p>
+            </RoundedButton>
+          </Link>
         </div>
         <div className="flex justify-between mt-20 md:mt-[200px] p-5 flex-col md:flex-row gap-4">
           <div className="flex gap-6 items-end">

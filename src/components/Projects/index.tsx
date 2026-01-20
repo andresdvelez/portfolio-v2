@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import Link from "next/link";
 import { RoundedButton } from "../../common/RoundedButton";
 import { popularProjects } from "@/data/projects";
 import { useSmoothScrollContext } from "@/context/ref-scroll";
@@ -15,8 +16,11 @@ export function Projects() {
   const [activeMenu, setActiveMenu] = useState<number | null>(null);
 
   return (
-    <section className="flex flex-col items-center mt-[100px] pb-24 md:pb-28 content-container z-10 bg-background min-h-[80svh] gap-2 relative">
-      <p className="text-xl text-start w-full">Featured projects</p>
+    <section 
+      className="flex flex-col items-center mt-[100px] pb-24 md:pb-28 content-container z-10 bg-background min-h-[80svh] gap-2 relative"
+      aria-labelledby="projects-heading"
+    >
+      <h2 id="projects-heading" className="text-xl text-start w-full font-medium">Featured projects</h2>
       <div
         ref={topRightCornerRef}
         className="relative mix-blend-difference z-10 text-white w-full mb-8"
@@ -44,13 +48,11 @@ export function Projects() {
       </div>
       <Scene inView={inView} activeMenu={activeMenu} />
       <div className="flex gap-5 mx-12 md:mx-[200px] mb-16 md:mb-24">
-        <RoundedButton
-          onClick={() => {
-            window.location.href = "/work";
-          }}
-        >
-          <p className="py-1">More works</p>
-        </RoundedButton>
+        <Link href="/work" className="inline-block">
+          <RoundedButton>
+            <p className="py-1">More works</p>
+          </RoundedButton>
+        </Link>
       </div>
       {/* <div ref={workRef} className="h-3 w-3 absolute inset-0 bg-red-500"></div> */}
     </section>

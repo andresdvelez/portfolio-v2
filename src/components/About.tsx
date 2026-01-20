@@ -15,11 +15,13 @@ export const About = () => {
     <section
       ref={workRef}
       className="flex flex-col md:flex-row gap-x-0 gap-y-0 max-w-[1440px] py-[86px] content-container"
+      aria-labelledby="about-heading"
     >
-      <p className="w-1/4 text-xl">About</p>
-      <p className="w-full lg:w-[90%] pr-0 lg:pr-[237px] text-xl md:text-3xl lg:text-[34px] leading-[1.3] md:leading-[1.4]">
-        With over 5 years of experience working with multinational companies and
-        internationally recognized brands, I specialize in developing technology
+      <h2 id="about-heading" className="w-1/4 text-xl font-medium">About</h2>
+      <div className="w-full lg:w-[90%] pr-0 lg:pr-[237px]">
+        <p className="text-xl md:text-3xl lg:text-[34px] leading-[1.3] md:leading-[1.4]">
+        I&apos;m Andrés Vélez, a Full Stack developer with over 5 years of experience working with multinational companies and
+        internationally recognized brands. I specialize in developing technology
         companies and projects that generate real impact. Currently, I am
         co-founder of{" "}
         <Link
@@ -57,7 +59,8 @@ export const About = () => {
         companies across different sectors. My approach combines strategic
         vision with effective execution, building solutions that not only meet
         objectives but transform industries.
-      </p>
+        </p>
+      </div>
     </section>
   );
 };

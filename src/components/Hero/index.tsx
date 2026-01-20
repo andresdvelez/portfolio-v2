@@ -79,7 +79,7 @@ export const Hero = () => {
             {/* Main Title */}
             <div className="space-y-2 md:space-y-3">
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium leading-[1.1] tracking-tight">
-                Hi, I&apos;m a
+                Hi, I&apos;m <span className="text-white/90">Andrés Vélez</span>
                 <br />
                 <span className="text-white/90">Full Stack</span>
                 <br />
@@ -90,7 +90,7 @@ export const Hero = () => {
               </h1>
 
               <p className="text-xs sm:text-sm md:text-base text-white/50 max-w-[480px] font-light leading-relaxed">
-                With over 5 years of experience working with multinational
+                Andrés Vélez is a Full Stack developer with over 5 years of experience working with multinational
                 companies and recognized brands, building impactful technology
                 solutions
               </p>

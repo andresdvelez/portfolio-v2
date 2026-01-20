@@ -5,13 +5,14 @@ import { Magnetic } from "../Magnetic";
 interface Props {
   children: ReactElement;
   backgroundColor?: string;
-  onClick: () => void;
+  onClick?: () => void;
   className?: string;
 }
 
 export function RoundedButton({
   children,
   backgroundColor = "#455CE9",
+  onClick,
   ...attributes
 }: Props) {
   const circle = useRef(null);
@@ -55,6 +56,7 @@ export function RoundedButton({
         onMouseLeave={() => {
           manageMouseLeave();
         }}
+        onClick={onClick}
         {...attributes}
       >
         {children}

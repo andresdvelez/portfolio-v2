@@ -1,20 +1,26 @@
-# robots.txt para www.andresvelez.co
-# Portafolio de Andrés Vélez - Desarrollador Full Stack
+# robots.txt for www.andresvelez.co
+# Andrés Vélez - Full Stack Software Developer Portfolio
 
 User-agent: *
 Allow: /
 Allow: /work
+Disallow: /api/
 
 Sitemap: https://www.andresvelez.co/sitemap.xml
 
-# Optimización para Google
+# Google Search Engine
 User-agent: Googlebot
 Allow: /
 Allow: /work
+Disallow: /api/
 
-# Optimización para Bing
+# Bing Search Engine
 User-agent: Bingbot
 Allow: /
 Allow: /work
+Disallow: /api/
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
 
 

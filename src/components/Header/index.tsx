@@ -8,6 +8,7 @@ import clsx from "clsx";
 import { useHeader } from "./header.hook";
 import { useSmoothScrollContext } from "@/context/ref-scroll";
 import { useHeaderTheme } from "@/hooks/useHeaderTheme";
+import Link from "next/link";
 
 export const Header = () => {
   const { header, button, setIsActive, isActive } = useHeader();
@@ -68,19 +69,38 @@ export const Header = () => {
             </div>
           </div>
         </div>
-        <div className="lg:flex items-center hidden">
+        <nav className="lg:flex items-center hidden" aria-label="Main navigation">
           {HeaderLinks.map((item) => (
             <Magnetic key={item.title}>
-              <div
-                className="relative z-10 flex flex-col px-4 py-3 cursor-pointer hover:scale-105 group"
-                onClick={() => handleSmoothScroll(item.ref)}
-              >
-                {item.title}
-                <div className="absolute top-11 left-1/2 h-1 w-1 bg-foreground rounded-full transform scale-0 group-hover:scale-100 transition-transform duration-200 ease-[cubic-bezier(0.76, 0, 0.24, 1)]"></div>
-              </div>
+              {item.title === "Proyectos" ? (
+                <Link
+                  href="/work"
+                  className="relative z-10 flex flex-col px-4 py-3 cursor-pointer hover:scale-105 group"
+                  aria-label={`Navigate to ${item.title} page`}
+                >
+                  {item.title}
+                  <div className="absolute top-11 left-1/2 h-1 w-1 bg-foreground rounded-full transform scale-0 group-hover:scale-100 transition-transform duration-200 ease-[cubic-bezier(0.76, 0, 0.24, 1)]"></div>
+                </Link>
+              ) : (
+                <div
+                  className="relative z-10 flex flex-col px-4 py-3 cursor-pointer hover:scale-105 group"
+                  onClick={() => handleSmoothScroll(item.ref)}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      handleSmoothScroll(item.ref);
+                    }
+                  }}
+                  aria-label={`Scroll to ${item.title} section`}
+                >
+                  {item.title}
+                  <div className="absolute top-11 left-1/2 h-1 w-1 bg-foreground rounded-full transform scale-0 group-hover:scale-100 transition-transform duration-200 ease-[cubic-bezier(0.76, 0, 0.24, 1)]"></div>
+                </div>
+              )}
             </Magnetic>
           ))}
-        </div>
+        </nav>
       </div>
       <div
         ref={button}

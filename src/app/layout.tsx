@@ -54,7 +54,7 @@ export const metadata: Metadata = {
   creator: "Andrés Vélez",
   publisher: "Andrés Vélez",
   alternates: {
-    canonical: "https://www.andresvelez.co",
+    canonical: BASE_URL,
   },
   openGraph: {
     title: "Andrés Vélez | Full Stack Software Developer & Tech Entrepreneur",
@@ -162,12 +162,37 @@ export default function RootLayout({
     ],
   };
 
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Andrés Vélez - Full Stack Developer Portfolio",
+    url: BASE_URL,
+    description:
+      "Professional portfolio of Andrés Vélez, Full Stack Software Developer and Co-Founder of Norvik Tech and Ganado Co. Based in Medellín, Colombia.",
+    author: {
+      "@type": "Person",
+      name: "Andrés Vélez",
+    },
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${BASE_URL}/work?search={search_term_string}`,
+      },
+      "query-input": "required name=search_term_string",
+    },
+  };
+
   return (
     <html lang="en">
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
       </head>
       <body
