@@ -130,7 +130,7 @@ export const Hero = () => {
                       className="w-full h-auto grainy"
                       classNames={{
                         wrapper: "w-full !max-w-full",
-                        img: "object-cover w-full h-auto rounded-xl",
+                        img: "object-cover object-[50%_30%] w-full h-auto rounded-xl",
                       }}
                     />
                   </div>

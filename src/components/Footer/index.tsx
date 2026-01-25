@@ -49,7 +49,7 @@ export function Footer() {
                 fill={true}
                 alt={"Andrés Vélez - Full Stack Developer"}
                 src={`/me.png`}
-                className="object-cover object-[50%_0%] rounded-full contrast-[1.1] brightness-[0.9]"
+                className="object-cover object-[50%_30%] rounded-full contrast-[1.1] brightness-[0.9]"
               />
             </div>
             <h3 className="ml-3 text-4xl md:text-[5vw] font-light m-0">
