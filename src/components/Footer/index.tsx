@@ -46,7 +46,7 @@ export function Footer() {
     >
       <div
         ref={contactRef}
-        className="w-full max-w-[1800px] scroll-mt-28 pt-40 sm:scroll-mt-36 sm:pt-48 md:scroll-mt-40 md:pt-52 lg:pt-56 xl:pt-60"
+        className="w-full max-w-[1800px] scroll-mt-40 pt-44 sm:scroll-mt-44 sm:pt-52 md:scroll-mt-48 md:pt-56 lg:scroll-mt-36 lg:pt-56 xl:scroll-mt-40 xl:pt-60"
       >
         <div className="relative mx-8 overflow-visible border-b border-gray-600 pb-12 max-md:pb-14 md:mx-12 md:pb-20 lg:mx-[200px]">
           <span className="flex items-center">

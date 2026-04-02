@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   title:
     "Andrés Vélez | Founder of Norvik Tech — AI, Web3 & Full Stack Engineering",
   description:
-    "Andrés Vélez is the founder of Norvik Tech, a product studio shipping platforms across applied AI, deep learning, Web3, and regulated industries. Personal engineering blog and portfolio with case studies from Palmapp, SEMsei, Ganado.co, Indahouse, and more. Open source contributor. Medellín, Colombia.",
+    "Andrés Vélez is the founder of Norvik Tech, a product studio shipping platforms across applied AI, deep learning, Web3, and regulated industries. Personal engineering blog and portfolio with case studies from Palmapp, Semsei, Ganado.co, Indahouse, and more. Open source contributor. Medellín, Colombia.",
   keywords: [
     "Andrés Vélez",
     "Andres Velez",

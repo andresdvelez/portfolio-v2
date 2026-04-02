@@ -214,7 +214,7 @@ export const Hero = () => {
                           target="_blank"
                           className="text-white/50 hover:text-white/90 transition-all duration-300 font-bold text-xs tracking-wider"
                         >
-                          SEMSEI · GEN AI SEO
+                          Semsei · Gen AI SEO
                         </Link>
                         <Link
                           href="https://ganado.co"

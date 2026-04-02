@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { ArrowRightIcon, ArrowUpRightIcon } from "@/components/icons/Arrows";
 
 const container = {
   hidden: { opacity: 0 },
@@ -99,11 +100,9 @@ export default function WorkPage() {
                       </p>
                     )}
                   </div>
-                  <span className="inline-flex shrink-0 items-center gap-1 text-sm text-white/45 transition-colors group-hover:text-white/90">
+                  <span className="inline-flex shrink-0 items-center gap-1.5 text-sm text-white/45 transition-colors group-hover:text-white/90">
                     Visit
-                    <span aria-hidden className="text-base">
-                      ↗
-                    </span>
+                    <ArrowUpRightIcon className="h-4 w-4 shrink-0 sm:h-[1.125rem] sm:w-[1.125rem]" />
                   </span>
                 </div>
                 <p className="mt-3 border-t border-white/[0.06] pt-3 text-sm font-light leading-relaxed text-white/55 sm:mt-4 sm:pt-4 sm:text-[0.9375rem]">
@@ -130,9 +129,10 @@ export default function WorkPage() {
             href="https://github.com/andresvelez"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm text-white/45 underline-offset-4 transition-colors hover:text-white/90 hover:underline"
+            className="inline-flex items-center gap-1.5 text-sm text-white/45 underline-offset-4 transition-colors hover:text-white/90 hover:underline"
           >
-            Open source on GitHub →
+            Open source on GitHub
+            <ArrowRightIcon className="h-4 w-4 shrink-0" />
           </Link>
         </motion.div>
       </div>

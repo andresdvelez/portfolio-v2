@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     "Web3 PropTech",
     "Deep learning AgriTech",
     "RegTech",
-    "SEMsei",
+    "Semsei",
     "Palmapp",
     "Ganado.co",
     "Indahouse",

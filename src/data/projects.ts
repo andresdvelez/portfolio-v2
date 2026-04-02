@@ -23,7 +23,7 @@ export const projects: PortfolioProject[] = [
     year: "2026",
   },
   {
-    title: "SEMsei",
+    title: "Semsei",
     slug: "semsei",
     description:
       "MarTech platform that scales SEO and LLMO-ready pages with generative workflows—shipping hundreds of indexable routes without betting the funnel only on paid media.",

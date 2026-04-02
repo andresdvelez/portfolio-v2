@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { RoundedButton } from "../../common/RoundedButton";
 import { popularProjects } from "@/data/projects";
+import { ArrowRightIcon, ArrowUpRightIcon } from "@/components/icons/Arrows";
 import Scene from "../Scene";
 
 /** Fine pointer + hover: real mice/trackpads. Skips most phones/tablets to save GPU and avoid broken “hover”. */
@@ -97,22 +98,8 @@ export function Projects() {
                       )}
                     </div>
                     <div className="flex shrink-0 flex-col items-end justify-center gap-1 pl-1">
-                      <span
-                        className="inline-flex text-white/35 transition-colors group-hover:text-white/80"
-                        aria-hidden
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth={1.75}
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          className="h-[1.125rem] w-[1.125rem] sm:h-5 sm:w-5"
-                        >
-                          <path d="M5 19 19 5M19 5h-7M19 5v7" />
-                        </svg>
+                      <span className="inline-flex text-white/35 transition-colors group-hover:text-white/80">
+                        <ArrowUpRightIcon className="h-[1.125rem] w-[1.125rem] sm:h-5 sm:w-5" />
                       </span>
                       <span className="hidden text-[10px] uppercase tracking-wider text-white/35 group-hover:text-white/50 sm:block">
                         Visit
@@ -131,9 +118,10 @@ export function Projects() {
               </Link>
               <Link
                 href="/work"
-                className="text-center text-sm text-white/45 transition-colors hover:text-white/90 sm:text-right underline-offset-4 hover:underline"
+                className="inline-flex items-center justify-center gap-1.5 text-center text-sm text-white/45 transition-colors hover:text-white/90 sm:justify-end sm:text-right underline-offset-4 hover:underline"
               >
-                Browse all case studies →
+                Browse all case studies
+                <ArrowRightIcon className="h-4 w-4 shrink-0" />
               </Link>
             </div>
           </div>
