@@ -98,10 +98,21 @@ export function Projects() {
                     </div>
                     <div className="flex shrink-0 flex-col items-end justify-center gap-1 pl-1">
                       <span
-                        className="text-lg text-white/35 transition-colors group-hover:text-white/80 sm:text-xl"
+                        className="inline-flex text-white/35 transition-colors group-hover:text-white/80"
                         aria-hidden
                       >
-                        ↗
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth={1.75}
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="h-[1.125rem] w-[1.125rem] sm:h-5 sm:w-5"
+                        >
+                          <path d="M5 19 19 5M19 5h-7M19 5v7" />
+                        </svg>
                       </span>
                       <span className="hidden text-[10px] uppercase tracking-wider text-white/35 group-hover:text-white/50 sm:block">
                         Visit

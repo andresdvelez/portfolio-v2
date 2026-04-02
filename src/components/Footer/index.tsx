@@ -48,7 +48,7 @@ export function Footer() {
         ref={contactRef}
         className="w-full max-w-[1800px] scroll-mt-28 pt-40 sm:scroll-mt-36 sm:pt-48 md:scroll-mt-40 md:pt-52 lg:pt-56 xl:pt-60"
       >
-        <div className="relative mx-8 overflow-visible border-b border-gray-600 pb-16 md:mx-12 md:pb-20 lg:mx-[200px]">
+        <div className="relative mx-8 overflow-visible border-b border-gray-600 pb-12 max-md:pb-14 md:mx-12 md:pb-20 lg:mx-[200px]">
           <span className="flex items-center">
             <div className="w-[60px] h-[60px] md:w-[100px] md:h-[100px] relative rounded-full overflow-hidden grainy">
               <Image
@@ -65,9 +65,10 @@ export function Footer() {
           <h3 className="text-4xl md:text-[5vw] font-light lg:mt-6">
             together
           </h3>
+          {/* Móvil: flujo normal para no solapar email CTAs; md+: círculo sobre la línea como antes */}
           <motion.div
             style={{ x: xReduced }}
-            className="pointer-events-auto absolute right-0 top-[calc(100%-70px)] z-20 md:left-[calc(100%-400px)] md:right-auto md:top-[calc(100%-75px)]"
+            className="pointer-events-auto z-20 mt-8 flex w-full justify-end max-md:static max-md:translate-x-0 md:absolute md:right-0 md:top-[calc(100%-70px)] md:mt-0 md:w-auto md:justify-start lg:left-[calc(100%-400px)] lg:right-auto lg:top-[calc(100%-75px)]"
           >
             <RoundedButton
               onClick={() => setShowContactForm(true)}
@@ -87,7 +88,7 @@ export function Footer() {
             viewBox="0 0 9 9"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className="absolute top-[30%] left-full"
+            className="pointer-events-none absolute top-[30%] left-full max-md:hidden"
           >
             <path
               d="M8 8.5C8.27614 8.5 8.5 8.27614 8.5 8L8.5 3.5C8.5 3.22386 8.27614 3 8 3C7.72386 3 7.5 3.22386 7.5 3.5V7.5H3.5C3.22386 7.5 3 7.72386 3 8C3 8.27614 3.22386 8.5 3.5 8.5L8 8.5ZM0.646447 1.35355L7.64645 8.35355L8.35355 7.64645L1.35355 0.646447L0.646447 1.35355Z"
@@ -95,7 +96,7 @@ export function Footer() {
             />
           </motion.svg>
         </div>
-        <div className="mx-8 mt-16 flex w-full max-w-full flex-col items-start gap-4 md:mx-12 md:mt-20 lg:mx-[200px] lg:mt-16">
+        <div className="mx-8 mt-12 flex w-full max-w-full flex-col items-start gap-4 md:mx-12 md:mt-20 lg:mx-[200px] lg:mt-16">
           <StableMagnetic className="inline-flex self-start">
             <RoundedButton
               disableMagnetic

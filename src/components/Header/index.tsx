@@ -9,10 +9,23 @@ import { useHeader } from "./header.hook";
 import { useSmoothScrollContext } from "@/context/ref-scroll";
 import { useHeaderTheme } from "@/hooks/useHeaderTheme";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+
+const SCROLL_CONTAINER_THRESHOLD_PX = 16;
 
 export const Header = () => {
   const { header, button, setIsActive, isActive } = useHeader();
   const isDark = useHeaderTheme();
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const sync = () => {
+      setIsScrolled(window.scrollY > SCROLL_CONTAINER_THRESHOLD_PX);
+    };
+    sync();
+    window.addEventListener("scroll", sync, { passive: true });
+    return () => window.removeEventListener("scroll", sync);
+  }, []);
 
   const { handleSmoothScroll, workRef, contactRef, homeRef } =
     useSmoothScrollContext();
@@ -33,10 +46,22 @@ export const Header = () => {
       <div
         ref={header}
         className={clsx(
-          "dynamic-header-theme fixed top-6 left-4 sm:left-6 z-50 flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 font-light backdrop-blur-xl rounded-full transition-colors duration-300",
-          "w-[calc(100%-124px)] sm:w-[calc(100%-140px)] md:w-[calc(100%-180px)] lg:w-[90%] lg:left-1/2 lg:-translate-x-1/2 max-w-[1200px]",
-          "bg-white/[0.03] border border-white/[0.08]",
-          isDark ? "text-white" : "text-black" // Dynamic text color for all screen sizes
+          "dynamic-header-theme fixed left-4 z-50 flex items-center font-light duration-300 sm:left-6",
+          "w-[calc(100%-124px)] sm:w-[calc(100%-140px)] md:w-[calc(100%-180px)]",
+          "transition-[background-color,border-color,box-shadow,backdrop-filter,padding,border-radius]",
+          /* Móvil / tablet: alineado al menú; sin card arriba del todo */
+          "max-lg:top-[26px] max-lg:justify-start",
+          isScrolled
+            ? [
+                "max-lg:h-auto max-lg:min-h-[3.25rem] max-lg:max-h-20 max-lg:rounded-full max-lg:border max-lg:px-3 max-lg:py-2 max-lg:backdrop-blur-xl max-lg:shadow-[0_8px_32px_rgba(0,0,0,0.18)]",
+                isDark
+                  ? "max-lg:border-white/[0.12] max-lg:bg-white/[0.08]"
+                  : "max-lg:border-black/[0.1] max-lg:bg-black/[0.06]",
+              ]
+            : "max-lg:h-20 max-lg:rounded-none max-lg:border-0 max-lg:bg-transparent max-lg:p-0 max-lg:shadow-none max-lg:backdrop-blur-none",
+          /* Desktop: barra centrada (siempre con contenedor) */
+          "lg:top-6 lg:left-1/2 lg:h-auto lg:max-w-[1200px] lg:w-[90%] lg:-translate-x-1/2 lg:justify-between lg:rounded-full lg:border lg:border-white/[0.08] lg:bg-white/[0.03] lg:px-6 lg:py-4 lg:backdrop-blur-xl lg:shadow-none",
+          isDark ? "text-white" : "text-black"
         )}
       >
         <div

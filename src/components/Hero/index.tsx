@@ -36,7 +36,7 @@ export const Hero = () => {
   return (
     <section
       ref={targetRef}
-      className="min-h-screen lg:h-screen flex flex-col justify-center items-center relative overflow-hidden py-24 lg:py-0"
+      className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden pb-24 max-lg:pt-40 lg:h-screen lg:py-0"
     >
       <div className="absolute -inset-y-4 h-3 w-3" ref={homeRef}></div>
 
@@ -59,10 +59,10 @@ export const Hero = () => {
             size="lg"
             className="bg-white/[0.03] backdrop-blur-xl border border-white/[0.08] px-4 py-2"
             startContent={
-              <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse mr-2"></div>
+              <div className="mr-2 h-2 w-2 shrink-0 rounded-full bg-green-500 animate-pulse" />
             }
           >
-            <span className="text-white/80 text-xs md:text-sm font-light tracking-wide">
+            <span className="text-white/80 text-xs font-light tracking-wide md:text-sm">
               FOUNDER @ NORVIK · OPEN TO SELECT COLLABS
             </span>
           </Chip>

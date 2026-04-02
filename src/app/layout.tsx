@@ -181,7 +181,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en">
+    <html lang="en" className="max-w-full overflow-x-clip">
       <head>
         <script
           type="application/ld+json"
@@ -193,7 +193,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={` ${saintRegus.variable} ${inter.className} antialiased w-screen overflow-x-hidden`}
+        className={` ${saintRegus.variable} ${inter.className} antialiased min-h-screen w-full max-w-full overflow-x-clip`}
       >
         <SmoothScrollProvider>
           <RouteTransition />
