@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { RoundedButton } from "../../common/RoundedButton";
+import { StableMagnetic } from "../../common/StableMagnetic";
 import { useScroll, motion, useTransform, AnimatePresence } from "framer-motion";
 import { Magnetic } from "../../common/Magnetic";
 import { useSmoothScrollContext } from "@/context/ref-scroll";
@@ -21,7 +22,9 @@ export function Footer() {
 
   const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
 
-  const xMobile = useTransform(scrollYProgress, [0, 1], [0, 220]);
+  // En móvil no desplazar en X: valores grandes (p. ej. 220px) empujaban el botón
+  // fuera del viewport al combinarlo con `right-0` + translateX.
+  const xMobile = useTransform(scrollYProgress, [0, 1], [0, 0]);
   const xDesktop = useTransform(scrollYProgress, [0, 1], [0, 100]);
   const y = useTransform(scrollYProgress, [0, 1], [-500, 0]);
   const rotate = useTransform(scrollYProgress, [0, 1], [120, 90]);
@@ -45,7 +48,7 @@ export function Footer() {
         ref={contactRef}
         className="w-full max-w-[1800px] scroll-mt-28 pt-40 sm:scroll-mt-36 sm:pt-48 md:scroll-mt-40 md:pt-52 lg:pt-56 xl:pt-60"
       >
-        <div className="border-b border-gray-600 pb-16 md:pb-20 mx-8 md:mx-12 lg:mx-[200px] relative">
+        <div className="relative mx-8 overflow-visible border-b border-gray-600 pb-16 md:mx-12 md:pb-20 lg:mx-[200px]">
           <span className="flex items-center">
             <div className="w-[60px] h-[60px] md:w-[100px] md:h-[100px] relative rounded-full overflow-hidden grainy">
               <Image
@@ -64,12 +67,13 @@ export function Footer() {
           </h3>
           <motion.div
             style={{ x: xReduced }}
-            className="absolute left-[calc(100%-400px)] top-[calc(100%-75px)]"
+            className="pointer-events-auto absolute right-0 top-[calc(100%-70px)] z-20 md:left-[calc(100%-400px)] md:right-auto md:top-[calc(100%-75px)]"
           >
             <RoundedButton
               onClick={() => setShowContactForm(true)}
               backgroundColor="#455CE9"
-              className="h-[140px] w-[140px] !p-0 text-center md:h-[180px] md:w-[180px] rounded-full border border-gray-400 !bg-white !text-black hover:!text-white"
+              hoverFillVariant="circle"
+              className="box-border !size-[140px] !min-h-[140px] !min-w-[140px] !max-h-[140px] !max-w-[140px] shrink-0 !p-0 text-center md:!size-[180px] md:!min-h-[180px] md:!min-w-[180px] md:!max-h-[180px] md:!max-w-[180px] rounded-full border border-gray-400 !bg-white !text-black hover:!text-white"
             >
               <p className="relative z-10 m-0 whitespace-nowrap text-center text-[15px] font-light leading-none md:text-lg">
                 Get in touch
@@ -92,19 +96,24 @@ export function Footer() {
           </motion.svg>
         </div>
         <div className="mx-8 mt-16 flex w-full max-w-full flex-col items-start gap-4 md:mx-12 md:mt-20 lg:mx-[200px] lg:mt-16">
-          <RoundedButton
-            className="!self-start"
-            onClick={() => setShowContactForm(true)}
-          >
-            <p>contact@andresvelez.co</p>
-          </RoundedButton>
+          <StableMagnetic className="inline-flex self-start">
+            <RoundedButton
+              disableMagnetic
+              className="!self-start"
+              onClick={() => setShowContactForm(true)}
+            >
+              <p>contact@andresvelez.co</p>
+            </RoundedButton>
+          </StableMagnetic>
           <Link
             href="mailto:contact@andresvelez.co"
             className="inline-flex self-start"
           >
-            <RoundedButton className="!self-start">
-              <p>Send direct email</p>
-            </RoundedButton>
+            <StableMagnetic className="inline-flex">
+              <RoundedButton disableMagnetic className="!self-start">
+                <p>Send direct email</p>
+              </RoundedButton>
+            </StableMagnetic>
           </Link>
         </div>
         <div className="mt-12 flex flex-col justify-between gap-4 px-5 pb-6 pt-4 md:mt-16 md:flex-row md:pb-8">

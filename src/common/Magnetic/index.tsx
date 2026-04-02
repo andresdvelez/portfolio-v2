@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect, useRef, useCallback } from "react";
+import React, { ReactElement, useCallback, useEffect, useRef } from "react";
 import gsap from "gsap";
 
 interface Props {
@@ -6,24 +6,27 @@ interface Props {
 }
 
 export function Magnetic({ children }: Props) {
-  const magnetic = useRef<HTMLElement>(null);
+  const magnetic = useRef<HTMLElement | null>(null);
+  /** Ref del hijo actual; se actualiza cada render sin meter `children` en useCallback. */
+  type ChildRef = React.Ref<HTMLElement> | undefined;
+  const childRefHolder = useRef<ChildRef>(undefined);
+
+  childRefHolder.current = (children as React.ReactElement & { ref?: ChildRef }).ref;
 
   const setMagneticRef = useCallback((node: HTMLElement | null) => {
     magnetic.current = node;
-    
-    // Preserve existing ref if child has one
-    const childRef = (children as any).ref;
+    const childRef = childRefHolder.current;
     if (typeof childRef === "function") {
       childRef(node);
     } else if (childRef && typeof childRef === "object" && "current" in childRef) {
       (childRef as React.MutableRefObject<HTMLElement | null>).current = node;
     }
-  }, [children]);
+  }, []);
 
   useEffect(() => {
-    if (!magnetic.current) return;
-
     const element = magnetic.current;
+    if (!element) return;
+
     const xTo = gsap.quickTo(element, "x", {
       duration: 1,
       ease: "elastic.out(1, 0.3)",
@@ -37,13 +40,11 @@ export function Magnetic({ children }: Props) {
       const { clientX, clientY } = e;
       const rect = element.getBoundingClientRect();
 
-      if (rect) {
-        const { height, width, left, top } = rect;
-        const x = clientX - (left + width / 2);
-        const y = clientY - (top + height / 2);
-        xTo(x * 0.35);
-        yTo(y * 0.35);
-      }
+      const { height, width, left, top } = rect;
+      const x = clientX - (left + width / 2);
+      const y = clientY - (top + height / 2);
+      xTo(x * 0.35);
+      yTo(y * 0.35);
     };
 
     const handleMouseLeave = () => {
@@ -60,7 +61,7 @@ export function Magnetic({ children }: Props) {
     };
   }, []);
 
-  return React.cloneElement(children, { 
+  return React.cloneElement(children, {
     ref: setMagneticRef,
   } as any);
 }

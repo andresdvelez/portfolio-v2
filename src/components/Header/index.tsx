@@ -111,7 +111,8 @@ export const Header = () => {
           onClick={() => {
             setIsActive(!isActive);
           }}
-          className="button backdrop-blur-md rounded-full shadow-lg transition-colors duration-300 bg-white/10 border border-white/[0.15] text-white"
+          hoverFillVariant="circle"
+          className="button !flex !h-20 !w-20 !min-h-20 !min-w-20 !max-h-20 !max-w-20 shrink-0 !rounded-full !p-0 !px-0 !py-0 backdrop-blur-md shadow-lg transition-colors duration-300 bg-white/10 !border !border-white/[0.15] text-white"
         >
           <div
             className={clsx("burger", {

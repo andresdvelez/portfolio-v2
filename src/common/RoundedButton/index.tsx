@@ -8,6 +8,13 @@ interface Props {
   backgroundColor?: string;
   onClick?: () => void;
   className?: string;
+  /** Sin Magnetic interno (p. ej. cuando el padre usa StableMagnetic). */
+  disableMagnetic?: boolean;
+  /**
+   * `pill`: halo ancho como en el diseño original (GSAP top/width encajan con w-full).
+   * `circle`: halo centrado cuadrado para botones redondos (header, Get in touch).
+   */
+  hoverFillVariant?: "pill" | "circle";
 }
 
 export function RoundedButton({
@@ -15,6 +22,8 @@ export function RoundedButton({
   backgroundColor = "#455CE9",
   onClick,
   className,
+  disableMagnetic = false,
+  hoverFillVariant = "pill",
   ...attributes
 }: Props) {
   const circle = useRef(null);
@@ -47,30 +56,38 @@ export function RoundedButton({
     }, 300);
   };
 
-  return (
-    <Magnetic>
+  const inner = (
+    <div
+      className={clsx(
+        "roundedButton relative flex w-max cursor-pointer items-center justify-center self-center rounded-[3em] border border-gray-300 bg-white px-14 py-4 text-black hover:text-white",
+        className
+      )}
+      style={{ overflow: "hidden" }}
+      onMouseEnter={() => {
+        manageMouseEnter();
+      }}
+      onMouseLeave={() => {
+        manageMouseLeave();
+      }}
+      onClick={onClick}
+      {...attributes}
+    >
+      {children}
       <div
-        className={clsx(
-          "roundedButton relative flex w-max cursor-pointer items-center justify-center self-center rounded-[3em] border border-gray-300 bg-white px-14 py-4 text-black hover:text-white",
-          className
-        )}
-        style={{ overflow: "hidden" }}
-        onMouseEnter={() => {
-          manageMouseEnter();
-        }}
-        onMouseLeave={() => {
-          manageMouseLeave();
-        }}
-        onClick={onClick}
-        {...attributes}
-      >
-        {children}
-        <div
-          ref={circle}
-          style={{ backgroundColor }}
-          className="absolute top-full -z-10 h-[150%] w-full rounded-[50%]"
-        ></div>
-      </div>
-    </Magnetic>
+        ref={circle}
+        style={{ backgroundColor }}
+        className={
+          hoverFillVariant === "circle"
+            ? "pointer-events-none absolute left-1/2 top-full -z-10 aspect-square w-[55%] -translate-x-1/2 rounded-full"
+            : "pointer-events-none absolute top-full -z-10 h-[150%] w-full rounded-[50%]"
+        }
+      />
+    </div>
   );
+
+  if (disableMagnetic) {
+    return inner;
+  }
+
+  return <Magnetic>{inner}</Magnetic>;
 }
