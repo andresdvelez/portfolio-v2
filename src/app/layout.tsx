@@ -71,7 +71,7 @@ export const metadata: Metadata = {
         url: OPEN_GRAPH_IMAGE_URL,
         width: 1200,
         height: 630,
-        alt: "Andrés Vélez — founder of Norvik Tech, engineer and writer in Medellín",
+        alt: "Andrés Vélez — founder of Norvik Tech, engineer in Medellín",
       },
     ],
     locale: "en_US",

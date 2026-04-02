@@ -39,13 +39,13 @@ export function Footer() {
     <motion.div
       style={{ y }}
       ref={container}
-      className="relative flex h-lvh flex-col items-center justify-center bg-white text-black"
+      className="relative flex min-h-[88svh] flex-col items-center justify-start bg-white pb-8 text-black md:min-h-[90svh]"
     >
       <div
         ref={contactRef}
-        className="w-full max-w-[1800px] scroll-mt-28 pt-52 sm:scroll-mt-36 sm:pt-56 md:scroll-mt-40 md:pt-64 lg:pt-72 xl:pt-80"
+        className="w-full max-w-[1800px] scroll-mt-28 pt-40 sm:scroll-mt-36 sm:pt-48 md:scroll-mt-40 md:pt-52 lg:pt-56 xl:pt-60"
       >
-        <div className="border-b border-gray-600 pb-[100px] mx-8 md:mx-12 lg:mx-[200px] relative">
+        <div className="border-b border-gray-600 pb-16 md:pb-20 mx-8 md:mx-12 lg:mx-[200px] relative">
           <span className="flex items-center">
             <div className="w-[60px] h-[60px] md:w-[100px] md:h-[100px] relative rounded-full overflow-hidden grainy">
               <Image
@@ -91,7 +91,7 @@ export function Footer() {
             />
           </motion.svg>
         </div>
-        <div className="mx-8 mt-[160px] flex w-full max-w-full flex-col items-start gap-5 md:mx-12 lg:mx-[200px] lg:mt-[100px]">
+        <div className="mx-8 mt-16 flex w-full max-w-full flex-col items-start gap-4 md:mx-12 md:mt-20 lg:mx-[200px] lg:mt-16">
           <RoundedButton
             className="!self-start"
             onClick={() => setShowContactForm(true)}
@@ -107,7 +107,7 @@ export function Footer() {
             </RoundedButton>
           </Link>
         </div>
-        <div className="flex justify-between mt-20 md:mt-[200px] p-5 flex-col md:flex-row gap-4">
+        <div className="mt-12 flex flex-col justify-between gap-4 px-5 pb-6 pt-4 md:mt-16 md:flex-row md:pb-8">
           <div className="flex gap-6 items-end">
             <span className="flex flex-col gap-3.5">
               <h3 className="text-gray-500 cursor-default font-light text-base">
