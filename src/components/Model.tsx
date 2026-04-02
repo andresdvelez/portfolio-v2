@@ -1,68 +1,79 @@
 //@ts-nocheck
 
 import React, { useEffect, useRef } from "react";
-import { useFrame, useThree } from "@react-three/fiber";
-import { motion } from "framer-motion-3d";
-import { animate, useMotionValue, useTransform } from "framer-motion";
+import { useFrame } from "@react-three/fiber";
+import { animate, useMotionValue } from "framer-motion";
 import { useTexture, useAspect } from "@react-three/drei";
 import { popularProjects } from "@/data/projects";
-import useDimension from "@/hooks/useDimensions";
 import useMouse from "@/hooks/useMouse";
 import * as THREE from "three";
 import { fragment, vertex } from "@/utils/shader";
 
+const lerp = (a: number, b: number, t: number) => a * (1 - t) + b * t;
+
+/**
+ * Maps window mouse to plane position using the **canvas** rect (not innerWidth/Height).
+ * The Scene canvas only covers the Portfolio section; window-space mapping skewed Y badly.
+ */
 export default function Model({ activeMenu }: { activeMenu: number | null }) {
   const plane = useRef<THREE.Mesh>(null);
-  const { viewport } = useThree();
-  const dimension = useDimension();
+  const smoothNorm = useRef({ x: 0.5, y: 0.5 });
   const mouse = useMouse();
   const opacity = useMotionValue(0);
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const textures = popularProjects.map((project) => useTexture(project.src));
   const { width, height } = textures[0].image;
-  const lerp = (x: number, y: number, a: number) => x * (1 - a) + y * a;
 
-  const scale = useAspect(width, height, 0.225);
-  const smoothMouse = {
-    x: useMotionValue(0),
-    y: useMotionValue(0),
-  };
+  const scale = useAspect(width, height, 0.16);
 
   useEffect(() => {
     if (!plane.current) return;
 
     const material = plane.current.material as THREE.ShaderMaterial;
+    const peakAlpha = 0.38;
     if (activeMenu != null) {
       material.uniforms.uTexture.value = textures[activeMenu];
-      animate(opacity, 1, {
-        duration: 0.2,
+      animate(opacity, peakAlpha, {
+        duration: 0.28,
         onUpdate: (latest) => (material.uniforms.uAlpha.value = latest),
       });
     } else {
       animate(opacity, 0, {
-        duration: 0.2,
+        duration: 0.35,
         onUpdate: (latest) => (material.uniforms.uAlpha.value = latest),
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeMenu]);
 
-  useFrame(() => {
+  useFrame((state) => {
     if (!plane.current) return;
 
-    const material = plane.current.material as THREE.ShaderMaterial;
-    const { x, y } = mouse;
-    const smoothX = smoothMouse.x.get();
-    const smoothY = smoothMouse.y.get();
+    const { viewport, gl } = state;
+    const rect = gl.domElement.getBoundingClientRect();
+    const rw = rect.width || 1;
+    const rh = rect.height || 1;
 
-    if (Math.abs(x - smoothX) > 1) {
-      smoothMouse.x.set(lerp(smoothX, x, 0.1));
-      smoothMouse.y.set(lerp(smoothY, y, 0.1));
-      material.uniforms.uDelta.value = {
-        x: x - smoothX,
-        y: -1 * (y - smoothY),
-      };
-    }
+    let nx = (mouse.x - rect.left) / rw;
+    let ny = (mouse.y - rect.top) / rh;
+    nx = Math.min(1, Math.max(0, nx));
+    ny = Math.min(1, Math.max(0, ny));
+
+    const sn = smoothNorm.current;
+    sn.x = lerp(sn.x, nx, 0.14);
+    sn.y = lerp(sn.y, ny, 0.14);
+
+    const posX = (sn.x - 0.5) * viewport.width;
+    const posY = (0.5 - sn.y) * viewport.height;
+
+    plane.current.position.x = posX;
+    plane.current.position.y = posY;
+
+    const material = plane.current.material as THREE.ShaderMaterial;
+    material.uniforms.uDelta.value = {
+      x: (nx - sn.x) * viewport.width * 3,
+      y: -1 * (ny - sn.y) * viewport.height * 3,
+    };
   });
 
   const uniforms = useRef({
@@ -72,24 +83,8 @@ export default function Model({ activeMenu }: { activeMenu: number | null }) {
     uAlpha: { value: 0 },
   });
 
-  const { width: viewportWidth = 1, height: viewportHeight = 1 } =
-    viewport || {};
-  const { width: dimensionWidth = 1, height: dimensionHeight = 1 } =
-    dimension || {};
-
-  const x = useTransform(
-    smoothMouse.x,
-    [0, dimensionWidth],
-    [(-1 * viewportWidth) / 2, viewportWidth / 2]
-  );
-  const y = useTransform(
-    smoothMouse.y,
-    [0, dimensionHeight],
-    [viewportHeight / 2, (-1 * viewportHeight) / 2]
-  );
-
   return (
-    <motion.mesh position-x={x} position-y={y} ref={plane} scale={scale}>
+    <mesh ref={plane} scale={scale}>
       <planeGeometry args={[1, 1, 15, 15]} />
       <shaderMaterial
         vertexShader={vertex}
@@ -97,6 +92,6 @@ export default function Model({ activeMenu }: { activeMenu: number | null }) {
         uniforms={uniforms.current}
         transparent={true}
       />
-    </motion.mesh>
+    </mesh>
   );
 }

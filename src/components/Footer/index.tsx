@@ -39,15 +39,18 @@ export function Footer() {
     <motion.div
       style={{ y }}
       ref={container}
-      className="text-black flex flex-col items-center justify-center bg-white relative h-lvh"
+      className="relative flex h-lvh flex-col items-center justify-center bg-white text-black"
     >
-      <div className="pt-[200px] w-full max-w-[1800px]">
+      <div
+        ref={contactRef}
+        className="w-full max-w-[1800px] scroll-mt-28 pt-52 sm:scroll-mt-36 sm:pt-56 md:scroll-mt-40 md:pt-64 lg:pt-72 xl:pt-80"
+      >
         <div className="border-b border-gray-600 pb-[100px] mx-8 md:mx-12 lg:mx-[200px] relative">
           <span className="flex items-center">
             <div className="w-[60px] h-[60px] md:w-[100px] md:h-[100px] relative rounded-full overflow-hidden grainy">
               <Image
                 fill={true}
-                alt={"Andrés Vélez - Full Stack Developer"}
+                alt="Andrés Vélez — founder of Norvik Tech"
                 src={`/me.png`}
                 className="object-cover object-[50%_30%] rounded-full contrast-[1.1] brightness-[0.9]"
               />
@@ -65,10 +68,10 @@ export function Footer() {
           >
             <RoundedButton
               onClick={() => setShowContactForm(true)}
-              backgroundColor={"#334BD3"}
-              className="w-[140px] h-[140px] md:w-[180px] md:h-[180px] bg-[#455CE9] text-white rounded-full flex items-center justify-center cursor-pointer relative overflow-hidden"
+              backgroundColor="#455CE9"
+              className="h-[140px] w-[140px] !p-0 text-center md:h-[180px] md:w-[180px] rounded-full border border-gray-400 !bg-white !text-black hover:!text-white"
             >
-              <p className="m-0 text-lg font-light relative z-10">
+              <p className="relative z-10 m-0 whitespace-nowrap text-center text-[15px] font-light leading-none md:text-lg">
                 Get in touch
               </p>
             </RoundedButton>
@@ -88,18 +91,19 @@ export function Footer() {
             />
           </motion.svg>
         </div>
-        <div className="flex gap-5 mt-[160px] lg:mt-[100px] mx-12 lg:mx-[200px] self-start flex-wrap">
-          <RoundedButton onClick={() => setShowContactForm(true)}>
+        <div className="mx-8 mt-[160px] flex w-full max-w-full flex-col items-start gap-5 md:mx-12 lg:mx-[200px] lg:mt-[100px]">
+          <RoundedButton
+            className="!self-start"
+            onClick={() => setShowContactForm(true)}
+          >
             <p>contact@andresvelez.co</p>
           </RoundedButton>
-          <Link href="mailto:contact@andresvelez.co" className="inline-block">
-            <RoundedButton>
+          <Link
+            href="mailto:contact@andresvelez.co"
+            className="inline-flex self-start"
+          >
+            <RoundedButton className="!self-start">
               <p>Send direct email</p>
-            </RoundedButton>
-          </Link>
-          <Link href="/work" className="inline-block">
-            <RoundedButton>
-              <p>View all projects</p>
             </RoundedButton>
           </Link>
         </div>
@@ -156,8 +160,6 @@ export function Footer() {
           </div>
         </div>
       </div>
-      <div ref={contactRef}></div>
-
       {/* Modal del formulario de contacto */}
       <AnimatePresence>
         {showContactForm && (

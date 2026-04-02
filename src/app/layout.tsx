@@ -31,24 +31,28 @@ const OPEN_GRAPH_IMAGE_URL = `${BASE_URL}/thumbnail.jpg`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
-  title: "Andrés Vélez | Full Stack Software Developer & Co-Founder",
+  title:
+    "Andrés Vélez | Founder of Norvik Tech — AI, Web3 & Full Stack Engineering",
   description:
-    "Andrés Vélez is a Full Stack software developer with over 5 years of experience working with multinational companies and internationally recognized brands. Co-founder of Norvik Tech and Ganado Co, specialized in developing technology companies and projects that generate real impact. Based in Medellín, Colombia.",
+    "Andrés Vélez is the founder of Norvik Tech, a product studio shipping platforms across applied AI, deep learning, Web3, and regulated industries. Personal engineering blog and portfolio with case studies from Palmapp, SEMsei, Ganado.co, Indahouse, and more. Open source contributor. Medellín, Colombia.",
   keywords: [
     "Andrés Vélez",
     "Andres Velez",
-    "Full Stack Developer",
-    "Software Developer Medellín",
-    "React Developer Colombia",
-    "Next.js Developer",
-    "TypeScript Expert",
-    "Norvik Tech",
-    "Ganado Co",
-    "Blockchain Developer",
-    "Web Developer Medellín",
-    "Software Engineer Colombia",
-    "Full Stack Colombia",
-    "Andrés Vélez Developer",
+    "Norvik Tech founder",
+    "Applied AI",
+    "Deep learning products",
+    "Web3 developer",
+    "Blockchain product",
+    "Full Stack Developer Medellín",
+    "React",
+    "Next.js",
+    "TypeScript",
+    "Open source GitHub",
+    "Computer vision",
+    "RegTech",
+    "PropTech",
+    "AgriTech",
+    "Software studio Colombia",
   ],
   authors: [{ name: "Andrés Vélez" }],
   creator: "Andrés Vélez",
@@ -57,9 +61,9 @@ export const metadata: Metadata = {
     canonical: BASE_URL,
   },
   openGraph: {
-    title: "Andrés Vélez | Full Stack Software Developer & Tech Entrepreneur",
+    title: "Andrés Vélez | Norvik Tech founder — AI, Web3 & product engineering",
     description:
-      "Full Stack Developer with +5 years of experience working with multinational companies and recognized brands. Co-founder of Norvik Tech and Ganado Co. Specialized in developing technology companies and projects from Medellín, Colombia.",
+      "Founder-led studio portfolio: applied AI, deep learning in production, Web3-ready marketplaces, and full-stack platforms. Engineering notes, shipped work, and open source from Medellín.",
     url: BASE_URL,
     siteName: "Andrés Vélez - Professional Portfolio",
     images: [
@@ -67,7 +71,7 @@ export const metadata: Metadata = {
         url: OPEN_GRAPH_IMAGE_URL,
         width: 1200,
         height: 630,
-        alt: "Andrés Vélez - Full Stack Software Developer in Medellín, Colombia",
+        alt: "Andrés Vélez — founder of Norvik Tech, engineer and writer in Medellín",
       },
     ],
     locale: "en_US",
@@ -77,9 +81,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Andrés Vélez | Full Stack Developer & Co-Founder",
+    title: "Andrés Vélez | Founder of Norvik Tech — AI & Web3 engineering",
     description:
-      "Full Stack Developer +5 years exp. Co-founder @NorvikTech & @GanadoCo. Specialized in developing technology companies and projects",
+      "Founder @NorvikTech. Shipping applied AI, deep learning, Web3, and full-stack products. Portfolio + open source.",
     images: [OPEN_GRAPH_IMAGE_URL],
   },
   robots: {
@@ -107,9 +111,9 @@ export default function RootLayout({
     alternateName: "Andres Velez",
     url: BASE_URL,
     image: `${BASE_URL}/me.png`,
-    jobTitle: "Full Stack Software Developer",
+    jobTitle: "Founder & Principal Engineer",
     description:
-      "Full Stack software developer with over 5 years of experience working with multinational companies and recognized brands. Co-founder of Norvik Tech and Ganado Co, specialized in developing technology companies and projects.",
+      "Founder of Norvik Tech. Builds and leads product engineering across applied AI, deep learning, Web3, and enterprise platforms; open source collaborator.",
     alumniOf: {
       "@type": "EducationalOrganization",
       name: "Universidad de Antioquia",
@@ -129,34 +133,27 @@ export default function RootLayout({
       "https://ganado.co/",
     ],
     knowsAbout: [
+      "Artificial Intelligence",
+      "Deep Learning",
+      "Computer Vision",
+      "Web3",
+      "Blockchain",
       "React",
       "Next.js",
       "TypeScript",
-      "JavaScript",
       "Node.js",
-      "Blockchain",
-      "Inteligencia Artificial",
-      "Desarrollo Web",
-      "Arquitectura de Software",
-      "Full Stack Development",
+      "Open Source Software",
+      "Product Engineering",
+      "Software Architecture",
     ],
     hasOccupation: [
       {
         "@type": "Occupation",
-        name: "Co-Founder and Developer",
+        name: "Founder & Principal Engineer",
         occupationLocation: {
           "@type": "Organization",
           name: "Norvik Tech",
           url: "https://www.norvik.tech/es",
-        },
-      },
-      {
-        "@type": "Occupation",
-        name: "Co-Founder",
-        occupationLocation: {
-          "@type": "Organization",
-          name: "Ganado Co",
-          url: "https://ganado.co/",
         },
       },
     ],
@@ -165,10 +162,10 @@ export default function RootLayout({
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "Andrés Vélez - Full Stack Developer Portfolio",
+    name: "Andrés Vélez — engineering blog & Norvik portfolio",
     url: BASE_URL,
     description:
-      "Professional portfolio of Andrés Vélez, Full Stack Software Developer and Co-Founder of Norvik Tech and Ganado Co. Based in Medellín, Colombia.",
+      "Personal site of Andrés Vélez, founder of Norvik Tech: portfolio of shipped products, focus on AI, Web3, and open source. Medellín, Colombia.",
     author: {
       "@type": "Person",
       name: "Andrés Vélez",

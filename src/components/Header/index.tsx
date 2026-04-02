@@ -64,7 +64,7 @@ export const Header = () => {
                 Vélez
               </p>
               <p className="absolute left-[130px] pl-[0.3em] transition-transform duration-500 ease-[cubic-bezier(0.76, 0, 0.24, 1)] group-hover:-translate-x-[130px]">
-                Developer
+                Founder
               </p>
             </div>
           </div>
@@ -104,7 +104,7 @@ export const Header = () => {
       </div>
       <div
         ref={button}
-        className="headerButtonContainer"
+        className="headerButtonContainer lg:hidden"
         data-theme={isDark ? "dark" : "light"}
       >
         <RoundedButton

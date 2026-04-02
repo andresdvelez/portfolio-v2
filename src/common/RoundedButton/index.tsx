@@ -1,5 +1,6 @@
 import React, { ReactElement, useEffect, useRef } from "react";
 import gsap from "gsap";
+import clsx from "clsx";
 import { Magnetic } from "../Magnetic";
 
 interface Props {
@@ -13,6 +14,7 @@ export function RoundedButton({
   children,
   backgroundColor = "#455CE9",
   onClick,
+  className,
   ...attributes
 }: Props) {
   const circle = useRef(null);
@@ -48,7 +50,10 @@ export function RoundedButton({
   return (
     <Magnetic>
       <div
-        className="roundedButton relative flex w-max cursor-pointer items-center justify-center self-center rounded-[3em] border border-gray-300 bg-white px-14 py-4 text-black hover:text-white"
+        className={clsx(
+          "roundedButton relative flex w-max cursor-pointer items-center justify-center self-center rounded-[3em] border border-gray-300 bg-white px-14 py-4 text-black hover:text-white",
+          className
+        )}
         style={{ overflow: "hidden" }}
         onMouseEnter={() => {
           manageMouseEnter();

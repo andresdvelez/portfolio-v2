@@ -1,15 +1,7 @@
 "use client";
 
 import { useSmoothScrollContext } from "@/context/ref-scroll";
-import {
-  Card,
-  CardBody,
-  CardFooter,
-  CardHeader,
-  Image,
-  Chip,
-  Link,
-} from "@nextui-org/react";
+import { Card, CardBody, Image, Chip, Link } from "@nextui-org/react";
 import { useRef } from "react";
 import { useScroll, motion, useTransform } from "framer-motion";
 
@@ -25,7 +17,12 @@ export const Hero = () => {
 
   const y1 = useTransform(scrollYProgress, [0, 1], [0, 50]);
   const y2 = useTransform(scrollYProgress, [0, 1], [0, 80]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  // Hold full opacity longer while leaving the hero; fade only in the last ~35% of exit scroll
+  const opacity = useTransform(
+    scrollYProgress,
+    [0, 0.62, 1],
+    [1, 1, 0]
+  );
 
   const handleContact = () => {
     if (contactRef.current) {
@@ -63,7 +60,7 @@ export const Hero = () => {
             }
           >
             <span className="text-white/80 text-xs md:text-sm font-light tracking-wide">
-              AVAILABLE FOR WORK
+              FOUNDER @ NORVIK · OPEN TO SELECT COLLABS
             </span>
           </Chip>
         </motion.div>
@@ -79,20 +76,30 @@ export const Hero = () => {
             {/* Main Title */}
             <div className="space-y-2 md:space-y-3">
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium leading-[1.1] tracking-tight">
-                Hi, I&apos;m <span className="text-white/90">Andrés Vélez</span>
+                <span className="text-white/90">Andrés Vélez</span>
                 <br />
-                <span className="text-white/90">Full Stack</span>
-                <br />
-                developer
-                <span className="text-white/30 text-3xl sm:text-4xl md:text-5xl">
+                <span className="text-white/70 text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] font-light">
+                  Founder · Engineer · Writer
+                </span>
+                <span className="text-white/30 text-3xl sm:text-4xl md:text-5xl align-top">
+                  {" "}
                   ©
                 </span>
               </h1>
 
-              <p className="text-xs sm:text-sm md:text-base text-white/50 max-w-[480px] font-light leading-relaxed">
-                Andrés Vélez is a Full Stack developer with over 5 years of experience working with multinational
-                companies and recognized brands, building impactful technology
-                solutions
+              <p className="text-xs sm:text-sm md:text-base text-white/50 max-w-[520px] font-light leading-relaxed">
+                I created{" "}
+                <Link
+                  href="https://www.norvik.tech/es"
+                  target="_blank"
+                  className="text-white/70 hover:text-white transition-colors"
+                >
+                  Norvik Tech
+                </Link>{" "}
+                to ship ambitious software: applied AI and deep learning, Web3
+                and tokenized products where they earn their place, and
+                full-stack platforms you can scale. This is my public notebook and
+                proof of work—paired with open source on GitHub.
               </p>
             </div>
 
@@ -122,17 +129,20 @@ export const Hero = () => {
                 <div className="relative group">
                   {/* Image container with subtle border */}
                   <div className="relative bg-white/[0.03] backdrop-blur-xl border border-white/[0.08] rounded-2xl overflow-hidden p-2 transition-all duration-300 group-hover:border-white/[0.12]">
-                    <Image
-                      src="/me.png"
-                      alt="Andrés Vélez - Full Stack Software Developer"
-                      width={300}
-                      height={300}
-                      className="w-full h-auto grainy"
-                      classNames={{
-                        wrapper: "w-full !max-w-full",
-                        img: "object-cover object-[50%_30%] w-full h-auto rounded-xl",
-                      }}
-                    />
+                    <div className="rounded-xl bg-black flex items-center justify-center py-4 px-4 md:py-5 md:px-5 min-h-[220px] sm:min-h-[260px]">
+                      <Image
+                        src="/me.png"
+                        alt="Andrés Vélez — founder of Norvik Tech, engineer and writer"
+                        width={300}
+                        height={300}
+                        className="w-full h-auto grainy"
+                        classNames={{
+                          wrapper:
+                            "w-[82%] max-w-[260px] mx-auto !max-w-[260px]",
+                          img: "object-cover object-[50%_30%] w-full h-auto rounded-xl !max-h-[280px]",
+                        }}
+                      />
+                    </div>
                   </div>
                 </div>
               </motion.div>
@@ -153,33 +163,40 @@ export const Hero = () => {
                     <CardBody className="p-3 md:p-4 space-y-2 md:space-y-3">
                       <div className="space-y-1 md:space-y-2">
                         <p className="text-[10px] md:text-xs text-white/60 font-light">
-                          The most recent brands
+                          Norvik portfolio highlights
                         </p>
                         <p className="text-xs md:text-sm text-white/80 font-light">
-                          I happily worked with ❤️
+                          Products we architected end-to-end
                         </p>
                       </div>
                       <div className="flex flex-col gap-2">
                         <Link
-                          href="https://www.norvik.tech/es"
+                          href="https://palmapp.co/"
                           target="_blank"
                           className="text-white/50 hover:text-white/90 transition-all duration-300 font-bold text-xs tracking-wider"
                         >
-                          NORVIK TECH
+                          PALMAPP · AI / CV
+                        </Link>
+                        <Link
+                          href="https://semsei.io/"
+                          target="_blank"
+                          className="text-white/50 hover:text-white/90 transition-all duration-300 font-bold text-xs tracking-wider"
+                        >
+                          SEMSEI · GEN AI SEO
                         </Link>
                         <Link
                           href="https://ganado.co"
                           target="_blank"
                           className="text-white/50 hover:text-white/90 transition-all duration-300 font-bold text-xs tracking-wider"
                         >
-                          GANADO CO
+                          GANADO.CO
                         </Link>
                         <Link
-                          href="https://blooma.io"
+                          href="https://indahouse.com.co/"
                           target="_blank"
                           className="text-white/50 hover:text-white/90 transition-all duration-300 font-bold text-xs tracking-wider"
                         >
-                          BLOOMA
+                          INDAHOUSE · PROPTECH
                         </Link>
                       </div>
                     </CardBody>

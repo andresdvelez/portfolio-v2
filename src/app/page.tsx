@@ -13,9 +13,10 @@ const BASE_URL =
 
 // Metadata específica para la página principal
 export const metadata: Metadata = {
-  title: "Andrés Vélez | Full Stack Software Developer & Co-Founder",
+  title:
+    "Andrés Vélez | Founder of Norvik Tech — AI, Web3 & engineering notebook",
   description:
-    "Andrés Vélez is a Full Stack software developer with over 5 years of experience working with multinational companies and internationally recognized brands. Co-founder of Norvik Tech and Ganado Co, specialized in developing technology companies and projects that generate real impact. Based in Medellín, Colombia.",
+    "Personal engineering site of Andrés Vélez, founder of Norvik Tech: applied AI, deep learning, Web3, and full-stack delivery—with a portfolio aligned to the studio’s shipped work and open source on GitHub.",
   alternates: {
     canonical: BASE_URL,
   },

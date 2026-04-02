@@ -6,7 +6,6 @@ import { usePathname } from "next/navigation";
 export function Breadcrumbs() {
   const pathname = usePathname();
 
-  // No mostrar breadcrumbs en la página principal
   if (pathname === "/") {
     return null;
   }
@@ -17,19 +16,22 @@ export function Breadcrumbs() {
   ];
 
   return (
-    <nav aria-label="Breadcrumb" className="content-container pt-24 pb-4">
-      <ol className="flex items-center gap-2 text-sm text-white/60">
+    <nav
+      aria-label="Breadcrumb"
+      className="pb-6 pt-2 text-[11px] font-medium uppercase tracking-[0.2em] text-white/45 sm:text-xs"
+    >
+      <ol className="flex flex-wrap items-center gap-x-2 gap-y-1">
         {breadcrumbs.map((crumb, index) => (
           <li key={crumb.href} className="flex items-center">
-            {index > 0 && <span className="mx-2">/</span>}
+            {index > 0 && <span className="mx-2 text-white/25">/</span>}
             {index === breadcrumbs.length - 1 ? (
-              <span className="text-white/90 font-medium" aria-current="page">
+              <span className="text-white/70" aria-current="page">
                 {crumb.label}
               </span>
             ) : (
               <Link
                 href={crumb.href}
-                className="hover:text-white/90 transition-colors"
+                className="text-white/45 transition-colors hover:text-white/90"
               >
                 {crumb.label}
               </Link>
@@ -40,5 +42,3 @@ export function Breadcrumbs() {
     </nav>
   );
 }
-
-

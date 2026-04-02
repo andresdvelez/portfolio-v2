@@ -8,28 +8,30 @@ const BASE_URL =
     : `https://${RAW_BASE_URL}`;
 
 export const metadata: Metadata = {
-  title: "Andrés Vélez Projects | Full Stack Development Portfolio",
+  title: "Projects & case studies | Andrés Vélez",
   description:
-    "Explore Andrés Vélez's complete project portfolio: Norvik Tech, Ganado Co, Indahouse, EthicVoice and more. Innovative technological solutions in React, Next.js, Blockchain and AI developed by a Full Stack expert in Medellín, Colombia.",
+    "Portfolio of shipped products: applied AI, computer vision, marketplaces, RegTech, MarTech, e-commerce, and education platforms—each linking to the live product.",
   keywords: [
-    "Andrés Vélez Portfolio",
-    "Full Stack Developer Projects",
-    "Norvik Tech",
-    "Ganado Co",
+    "Andrés Vélez projects",
+    "Full stack portfolio",
+    "Applied AI",
+    "Web3 PropTech",
+    "Deep learning AgriTech",
+    "RegTech",
+    "SEMsei",
+    "Palmapp",
+    "Ganado.co",
     "Indahouse",
     "EthicVoice",
-    "Blooma",
-    "React Projects",
-    "Next.js Projects",
-    "Blockchain Projects Colombia",
-    "Web Development Medellín",
+    "Matchies",
+    "Newayzi",
   ],
   openGraph: {
-    title: "Andrés Vélez Projects | Full Stack Portfolio",
+    title: "Projects & case studies | Andrés Vélez",
     description:
-      "Complete portfolio with featured projects: Norvik Tech, Ganado Co, Indahouse, EthicVoice. Solutions in React, Next.js, Blockchain and AI.",
+      "Selected builds across AI, platforms, and regulated industries—live links to every product.",
     url: `${BASE_URL}/work`,
-    siteName: "Andrés Vélez - Professional Portfolio",
+    siteName: "Andrés Vélez",
     type: "website",
     locale: "en_US",
   },
@@ -46,9 +48,9 @@ export default function WorkLayout({
   const collectionPageSchema = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: "Andrés Vélez - Projects Portfolio",
+    name: "Andrés Vélez — projects & case studies",
     description:
-      "Portfolio of projects developed by Andrés Vélez including Norvik Tech, Ganado Co, Indahouse, EthicVoice, and Blooma.",
+      "Portfolio of software products and platforms led by Andrés Vélez.",
     url: `${BASE_URL}/work`,
     mainEntity: {
       "@type": "Person",

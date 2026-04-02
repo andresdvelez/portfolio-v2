@@ -17,6 +17,12 @@ body {
   @apply px-6 lg:px-[160px];
 }
 
+/* @react-three/fiber: inner layout divs sit above cards and default to pointer-events: auto */
+.portfolio-hover-scene,
+.portfolio-hover-scene * {
+  pointer-events: none !important;
+}
+
 /* Custom scrollbar styles */
 ::-webkit-scrollbar {
   display: none;

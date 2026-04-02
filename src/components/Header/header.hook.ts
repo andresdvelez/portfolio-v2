@@ -1,7 +1,8 @@
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/all";
 import { usePathname } from "next/navigation";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
+
+const LG_PX = 1024;
 
 export const useHeader = () => {
   const header = useRef(null);
@@ -14,68 +15,24 @@ export const useHeader = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
 
+  /** Menu button only on viewports < lg; no scroll-based reveal on desktop. */
   useLayoutEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+    if (!button.current) return;
 
-    const isMobileOrTablet = window.innerWidth < 1024; // lg breakpoint
-
-    // In mobile/tablet, always show the button
-    if (isMobileOrTablet) {
+    const syncMenuButton = () => {
+      const compact = window.innerWidth < LG_PX;
       gsap.set(button.current, {
-        scale: 1,
-        pointerEvents: "auto",
+        scale: compact ? 1 : 0,
+        pointerEvents: compact ? "auto" : "none",
       });
-      return; // Skip desktop scroll animation
-    }
+      if (!compact) {
+        setIsActive(false);
+      }
+    };
 
-    // Desktop behavior: show on scroll
-    const endScroll = window.innerHeight - 800;
-
-    const shouldShowInitially = window.scrollY > 10;
-    gsap.set(button.current, {
-      scale: shouldShowInitially ? 1 : 0,
-      pointerEvents: shouldShowInitially ? "auto" : "none",
-    });
-
-    gsap.to(button.current, {
-      scrollTrigger: {
-        trigger: document.documentElement,
-        start: "top top",
-        end: endScroll,
-        immediateRender: false,
-        onUpdate: (self) => {
-          if (self.direction === 1) {
-            // Scrolling down
-            gsap.to(button.current, {
-              scale: 1,
-              duration: 0.25,
-              ease: "power1.out",
-              onStart: () => {
-                gsap.set(button.current, { pointerEvents: "auto" });
-              },
-            });
-          } else if (self.direction === -1 && self.progress < 0.1) {
-            // Scrolling up and near the top
-            gsap.to(button.current, {
-              scale: 0,
-              duration: 0.25,
-              ease: "power1.out",
-              onComplete: () => {
-                gsap.set(button.current, { pointerEvents: "none" });
-              },
-            });
-            setIsActive(false);
-          }
-        },
-        onRefresh: () => {
-          const show = window.scrollY > 10;
-          gsap.set(button.current, {
-            scale: show ? 1 : 0,
-            pointerEvents: show ? "auto" : "none",
-          });
-        },
-      },
-    });
+    syncMenuButton();
+    window.addEventListener("resize", syncMenuButton);
+    return () => window.removeEventListener("resize", syncMenuButton);
   }, []);
 
   return {
